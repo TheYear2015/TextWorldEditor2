@@ -81,5 +81,46 @@ namespace TextWorldEditor2
             }
         }
 
+        ContentAction m_editingAction = null;
+        private void SetEditContentAction(ContentAction action)
+        {
+            m_editingAction = action;
+            if(action != null)
+            {
+                this.actionType.Text = action.Type.ToString();
+            }
+        }
+
+        private void contentTree_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void setActionData_Click(object sender, EventArgs e)
+        {
+            if (m_editingAction != null)
+            {
+                var action = m_editingAction;
+                action.Type = 0;
+                try
+                {
+                    action.Type = UInt32.Parse(this.actionType.Text);
+                }
+                catch 
+                {
+                }
+            }
+        }
+
+        private void contentList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
