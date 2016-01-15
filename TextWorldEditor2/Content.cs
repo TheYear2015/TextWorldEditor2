@@ -39,7 +39,14 @@ namespace TextWorldEditor2
     [DataContract]
     class ContentStage
     {
+        private UInt64 m_id = 0;
         [DataMember(Order = 0, IsRequired = true)]
+        public System.UInt64 Id
+        {
+            get { return m_id; }
+            set { m_id = value; }
+        }
+        [DataMember(Order = 1, IsRequired = true)]
         public string Name
         {
             get
@@ -55,7 +62,7 @@ namespace TextWorldEditor2
 
         private string m_name="";
         private List<ContentAction> m_contentList = new List<ContentAction>();
-        [DataMember(Order = 1)]
+        [DataMember(Order = 2)]
         public List<ContentAction> ContentList
         {
             get { return m_contentList; }

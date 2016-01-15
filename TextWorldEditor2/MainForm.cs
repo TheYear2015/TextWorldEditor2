@@ -21,10 +21,25 @@ namespace TextWorldEditor2
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+ 
         }
 
         private void contentToolStripBtn_Click(object sender, EventArgs e)
         {
+            //test
+            this.contentList.BeginUpdate();
+
+            for (int i = 0; i < 10; i++)
+            {
+                var lvi = new ListViewItem();
+
+                lvi.ImageIndex = i;
+ 
+                lvi.Text = "item" + i;
+
+                this.contentList.Items.Add(lvi);
+            }
+            this.contentList.EndUpdate();
         }
 
         private ContentStage m_contentStage = new ContentStage();

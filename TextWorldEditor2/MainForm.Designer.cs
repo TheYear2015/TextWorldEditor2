@@ -116,6 +116,7 @@
             this.contentList.Size = new System.Drawing.Size(658, 361);
             this.contentList.TabIndex = 2;
             this.contentList.UseCompatibleStateImageBehavior = false;
+            this.contentList.View = System.Windows.Forms.View.List;
             // 
             // groupBox1
             // 
