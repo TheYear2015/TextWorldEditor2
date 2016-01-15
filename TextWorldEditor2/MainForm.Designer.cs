@@ -58,6 +58,7 @@
             this.saveToolStripBtn.Size = new System.Drawing.Size(55, 22);
             this.saveToolStripBtn.Text = "Save";
             this.saveToolStripBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.saveToolStripBtn.Click += new System.EventHandler(this.saveToolStripBtn_Click);
             // 
             // loadToolStripBtn
             // 
@@ -66,6 +67,7 @@
             this.loadToolStripBtn.Name = "loadToolStripBtn";
             this.loadToolStripBtn.Size = new System.Drawing.Size(57, 22);
             this.loadToolStripBtn.Text = "Load";
+            this.loadToolStripBtn.Click += new System.EventHandler(this.loadToolStripBtn_Click);
             // 
             // testToolStripBtn
             // 
