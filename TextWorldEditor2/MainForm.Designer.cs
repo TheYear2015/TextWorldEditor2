@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.saveToolStripBtn = new System.Windows.Forms.ToolStripButton();
@@ -36,25 +37,26 @@
             this.contentTree = new System.Windows.Forms.TreeView();
             this.contentList = new System.Windows.Forms.ListView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.waitingSecond = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.actionText = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.chooseBtn1 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.chooseBtn2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.actionTypeCB = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.chooseBtn1 = new System.Windows.Forms.Button();
-            this.chooseBtn2 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.waitingSecond = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
+            this.stageSmallImageList = new System.Windows.Forms.ImageList(this.components);
             this.toolStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.waitingSecond)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip
@@ -109,11 +111,14 @@
             // 
             // contentList
             // 
-            this.contentList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.contentList.Dock = System.Windows.Forms.DockStyle.Left;
+            this.contentList.FullRowSelect = true;
+            this.contentList.GridLines = true;
             this.contentList.Location = new System.Drawing.Point(225, 28);
             this.contentList.Margin = new System.Windows.Forms.Padding(5);
             this.contentList.Name = "contentList";
-            this.contentList.Size = new System.Drawing.Size(658, 361);
+            this.contentList.Size = new System.Drawing.Size(394, 361);
+            this.contentList.SmallImageList = this.stageSmallImageList;
             this.contentList.TabIndex = 2;
             this.contentList.UseCompatibleStateImageBehavior = false;
             this.contentList.View = System.Windows.Forms.View.List;
@@ -133,89 +138,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Action";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "文字内容";
-            // 
-            // actionText
-            // 
-            this.actionText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.actionText.Location = new System.Drawing.Point(0, 12);
-            this.actionText.Multiline = true;
-            this.actionText.Name = "actionText";
-            this.actionText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.actionText.Size = new System.Drawing.Size(256, 88);
-            this.actionText.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "类型";
-            // 
-            // actionTypeCB
-            // 
-            this.actionTypeCB.FormattingEnabled = true;
-            this.actionTypeCB.Location = new System.Drawing.Point(97, 20);
-            this.actionTypeCB.Name = "actionTypeCB";
-            this.actionTypeCB.Size = new System.Drawing.Size(153, 20);
-            this.actionTypeCB.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 10);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 12);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "分支";
-            // 
-            // chooseBtn1
-            // 
-            this.chooseBtn1.Location = new System.Drawing.Point(0, 45);
-            this.chooseBtn1.Name = "chooseBtn1";
-            this.chooseBtn1.Size = new System.Drawing.Size(245, 23);
-            this.chooseBtn1.TabIndex = 5;
-            this.chooseBtn1.Text = "button1";
-            this.chooseBtn1.UseVisualStyleBackColor = true;
-            // 
-            // chooseBtn2
-            // 
-            this.chooseBtn2.Location = new System.Drawing.Point(0, 74);
-            this.chooseBtn2.Name = "chooseBtn2";
-            this.chooseBtn2.Size = new System.Drawing.Size(245, 23);
-            this.chooseBtn2.TabIndex = 6;
-            this.chooseBtn2.Text = "button2";
-            this.chooseBtn2.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.chooseBtn1);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.chooseBtn2);
-            this.panel1.Location = new System.Drawing.Point(0, 255);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(256, 100);
-            this.panel1.TabIndex = 7;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.actionText);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(0, 59);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(256, 100);
-            this.panel2.TabIndex = 8;
-            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.label5);
@@ -226,14 +148,14 @@
             this.panel3.Size = new System.Drawing.Size(256, 36);
             this.panel3.TabIndex = 9;
             // 
-            // label4
+            // label5
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(0, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 12);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "等待";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(172, 14);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(17, 12);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "秒";
             // 
             // waitingSecond
             // 
@@ -253,14 +175,103 @@
             this.waitingSecond.Size = new System.Drawing.Size(120, 21);
             this.waitingSecond.TabIndex = 1;
             // 
-            // label5
+            // label4
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(172, 14);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 12);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "秒";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(0, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 12);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "等待";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.actionText);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Location = new System.Drawing.Point(0, 59);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(256, 100);
+            this.panel2.TabIndex = 8;
+            // 
+            // actionText
+            // 
+            this.actionText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.actionText.Location = new System.Drawing.Point(0, 12);
+            this.actionText.Multiline = true;
+            this.actionText.Name = "actionText";
+            this.actionText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.actionText.Size = new System.Drawing.Size(256, 88);
+            this.actionText.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "文字内容";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.chooseBtn1);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.chooseBtn2);
+            this.panel1.Location = new System.Drawing.Point(0, 255);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(256, 100);
+            this.panel1.TabIndex = 7;
+            // 
+            // chooseBtn1
+            // 
+            this.chooseBtn1.Location = new System.Drawing.Point(0, 45);
+            this.chooseBtn1.Name = "chooseBtn1";
+            this.chooseBtn1.Size = new System.Drawing.Size(245, 23);
+            this.chooseBtn1.TabIndex = 5;
+            this.chooseBtn1.Text = "button1";
+            this.chooseBtn1.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 10);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 12);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "分支";
+            // 
+            // chooseBtn2
+            // 
+            this.chooseBtn2.Location = new System.Drawing.Point(0, 74);
+            this.chooseBtn2.Name = "chooseBtn2";
+            this.chooseBtn2.Size = new System.Drawing.Size(245, 23);
+            this.chooseBtn2.TabIndex = 6;
+            this.chooseBtn2.Text = "button2";
+            this.chooseBtn2.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "类型";
+            // 
+            // actionTypeCB
+            // 
+            this.actionTypeCB.FormattingEnabled = true;
+            this.actionTypeCB.Location = new System.Drawing.Point(97, 20);
+            this.actionTypeCB.Name = "actionTypeCB";
+            this.actionTypeCB.Size = new System.Drawing.Size(153, 20);
+            this.actionTypeCB.TabIndex = 0;
+            // 
+            // stageSmallImageList
+            // 
+            this.stageSmallImageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.stageSmallImageList.ImageSize = new System.Drawing.Size(32, 32);
+            this.stageSmallImageList.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // MainForm
             // 
@@ -280,13 +291,13 @@
             this.toolStrip.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.waitingSecond)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -314,6 +325,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown waitingSecond;
+        private System.Windows.Forms.ImageList stageSmallImageList;
     }
 }
 

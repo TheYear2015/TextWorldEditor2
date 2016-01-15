@@ -35,7 +35,9 @@ namespace TextWorldEditor2
 
                 lvi.ImageIndex = i;
  
-                lvi.Text = "item" + i;
+                lvi.Text = "item asdasdasdadasdada" + i;
+
+                //lvi.SubItems.Add("sdasdasdasdadasdada");
 
                 this.contentList.Items.Add(lvi);
             }
