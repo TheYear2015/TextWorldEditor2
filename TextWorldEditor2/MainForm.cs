@@ -21,27 +21,10 @@ namespace TextWorldEditor2
 
         private void MainForm_Load(object sender, EventArgs e)
         {
- 
         }
 
         private void contentToolStripBtn_Click(object sender, EventArgs e)
         {
-            //test
-            this.contentList.BeginUpdate();
-
-            for (int i = 0; i < 10; i++)
-            {
-                var lvi = new ListViewItem();
-
-                lvi.ImageIndex = i;
- 
-                lvi.Text = "item asdasdasdadasdada" + i;
-
-                //lvi.SubItems.Add("sdasdasdasdadasdada");
-
-                this.contentList.Items.Add(lvi);
-            }
-            this.contentList.EndUpdate();
         }
 
         private ContentStage m_contentStage = new ContentStage();
@@ -81,13 +64,17 @@ namespace TextWorldEditor2
             }
         }
 
-        ContentAction m_editingAction = null;
         private void SetEditContentAction(ContentAction action)
         {
-            m_editingAction = action;
             if(action != null)
             {
                 this.actionType.Text = action.Type.ToString();
+                this.actionText.Text = action.Text;
+            }
+            else
+            {
+                this.actionType.Text = "";
+                this.actionText.Text = "";
             }
         }
 
@@ -103,13 +90,17 @@ namespace TextWorldEditor2
 
         private void setActionData_Click(object sender, EventArgs e)
         {
-            if (m_editingAction != null)
+            if (this.contentList.SelectedIndices.Count > 0)
             {
-                var action = m_editingAction;
+                var index = this.contentList.SelectedIndices[0];
+                var action = (ContentAction)this.contentList.Items[index].Tag;
                 action.Type = 0;
                 try
                 {
                     action.Type = UInt32.Parse(this.actionType.Text);
+                    action.Text = this.actionText.Text;
+
+                    SetListViewItemActionInfo(index, action, this.contentList.Items[index]);
                 }
                 catch 
                 {
@@ -119,7 +110,67 @@ namespace TextWorldEditor2
 
         private void contentList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (this.contentList.SelectedIndices.Count > 0)
+            {
+                var index = this.contentList.SelectedIndices[0];
+                SetEditContentAction((ContentAction)this.contentList.Items[index].Tag);
 
+            }
+            else 
+            {
+                SetEditContentAction(null);
+            }
+        }
+
+        private void SetListViewItemActionInfo(int index, ContentAction action, ListViewItem lvi)
+        {
+            lvi.SubItems.Clear();
+            lvi.ImageIndex = 0;
+            lvi.Text = string.Format("action{0:D2}", index);
+            var info = new ListViewItem.ListViewSubItem();
+            info.Text = m_contentStage.ContentList[index].Text;
+            lvi.SubItems.Add(info);
+
+            lvi.Tag = m_contentStage.ContentList[index];
+        }
+
+        private void newAcitonMI_Click(object sender, EventArgs e)
+        {
+            var action = new ContentAction();
+
+            m_contentStage.ContentList.Add(action);
+
+            this.contentList.BeginUpdate();
+            this.contentList.Items.Clear();
+
+            for (int i = 0; i < m_contentStage.ContentList.Count(); i++)
+            {
+                var lvi = new ListViewItem();
+                SetListViewItemActionInfo(i, m_contentStage.ContentList[i], lvi);
+                this.contentList.Items.Add(lvi);
+            }
+            this.contentList.EndUpdate();
+        }
+
+        private void delActionMI_Click(object sender, EventArgs e)
+        {
+            if (this.contentList.SelectedIndices.Count > 0)
+            {
+                var index = this.contentList.SelectedIndices[0];
+                try
+                {
+                    this.contentList.Items.RemoveAt(index);
+                    m_contentStage.ContentList.RemoveAt(index);
+                    SetEditContentAction(null);
+                }
+                catch
+                {
+                }
+            }
+            else
+            {
+                SetEditContentAction(null);
+            }
         }
 
     }

@@ -38,26 +38,35 @@
             this.contentList = new System.Windows.Forms.ListView();
             this.stageSmallImageList = new System.Windows.Forms.ImageList(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.waitingSecond = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.actionText = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.chooseBtn1 = new System.Windows.Forms.Button();
             this.chooseBtn2 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.waitingSecond = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.actionText = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.actionType = new System.Windows.Forms.TextBox();
             this.setActionData = new System.Windows.Forms.Button();
+            this.actionContentMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.newAcitonMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.delActionMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.waitingSecond)).BeginInit();
-            this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.waitingSecond)).BeginInit();
+            this.actionContentMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip
@@ -113,16 +122,27 @@
             // 
             // contentList
             // 
+            this.contentList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader6});
+            this.contentList.ContextMenuStrip = this.actionContentMenu;
             this.contentList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contentList.FullRowSelect = true;
             this.contentList.GridLines = true;
+            this.contentList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.contentList.HideSelection = false;
+            this.contentList.LabelWrap = false;
             this.contentList.Location = new System.Drawing.Point(528, 3);
+            this.contentList.MultiSelect = false;
             this.contentList.Name = "contentList";
             this.contentList.Size = new System.Drawing.Size(480, 498);
             this.contentList.SmallImageList = this.stageSmallImageList;
             this.contentList.TabIndex = 2;
             this.contentList.UseCompatibleStateImageBehavior = false;
-            this.contentList.View = System.Windows.Forms.View.List;
+            this.contentList.View = System.Windows.Forms.View.Details;
             this.contentList.SelectedIndexChanged += new System.EventHandler(this.contentList_SelectedIndexChanged);
             // 
             // stageSmallImageList
@@ -148,16 +168,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1286, 504);
             this.tableLayoutPanel1.TabIndex = 4;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(170, 8);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 12);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "秒";
             // 
             // tableLayoutPanel2
             // 
@@ -185,6 +195,53 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(269, 498);
             this.tableLayoutPanel2.TabIndex = 7;
             // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Controls.Add(this.chooseBtn1, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.chooseBtn2, 0, 1);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(63, 396);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(203, 64);
+            this.tableLayoutPanel4.TabIndex = 5;
+            // 
+            // chooseBtn1
+            // 
+            this.chooseBtn1.Location = new System.Drawing.Point(3, 3);
+            this.chooseBtn1.Name = "chooseBtn1";
+            this.chooseBtn1.Size = new System.Drawing.Size(197, 26);
+            this.chooseBtn1.TabIndex = 5;
+            this.chooseBtn1.Text = "button1";
+            this.chooseBtn1.UseVisualStyleBackColor = true;
+            // 
+            // chooseBtn2
+            // 
+            this.chooseBtn2.Location = new System.Drawing.Point(3, 35);
+            this.chooseBtn2.Name = "chooseBtn2";
+            this.chooseBtn2.Size = new System.Drawing.Size(197, 26);
+            this.chooseBtn2.TabIndex = 6;
+            this.chooseBtn2.Text = "button2";
+            this.chooseBtn2.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 79.39699F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.60302F));
+            this.tableLayoutPanel3.Controls.Add(this.waitingSecond, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label5, 1, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(63, 361);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(200, 29);
+            this.tableLayoutPanel3.TabIndex = 5;
+            // 
             // waitingSecond
             // 
             this.waitingSecond.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -206,63 +263,15 @@
             this.waitingSecond.TabIndex = 1;
             this.waitingSecond.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label2
+            // label5
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 190);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "文字内容";
-            // 
-            // actionText
-            // 
-            this.actionText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.actionText.Location = new System.Drawing.Point(63, 38);
-            this.actionText.Multiline = true;
-            this.actionText.Name = "actionText";
-            this.actionText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.actionText.Size = new System.Drawing.Size(203, 317);
-            this.actionText.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 422);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 12);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "分支";
-            // 
-            // chooseBtn1
-            // 
-            this.chooseBtn1.Location = new System.Drawing.Point(3, 3);
-            this.chooseBtn1.Name = "chooseBtn1";
-            this.chooseBtn1.Size = new System.Drawing.Size(197, 26);
-            this.chooseBtn1.TabIndex = 5;
-            this.chooseBtn1.Text = "button1";
-            this.chooseBtn1.UseVisualStyleBackColor = true;
-            // 
-            // chooseBtn2
-            // 
-            this.chooseBtn2.Location = new System.Drawing.Point(3, 35);
-            this.chooseBtn2.Name = "chooseBtn2";
-            this.chooseBtn2.Size = new System.Drawing.Size(197, 26);
-            this.chooseBtn2.TabIndex = 6;
-            this.chooseBtn2.Text = "button2";
-            this.chooseBtn2.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 369);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 12);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "等待";
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(170, 8);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(17, 12);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "秒";
             // 
             // label1
             // 
@@ -274,34 +283,45 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "类型";
             // 
-            // tableLayoutPanel3
+            // label4
             // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 79.39699F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.60302F));
-            this.tableLayoutPanel3.Controls.Add(this.waitingSecond, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label5, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(63, 361);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(200, 29);
-            this.tableLayoutPanel3.TabIndex = 5;
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(15, 369);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 12);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "等待";
             // 
-            // tableLayoutPanel4
+            // label3
             // 
-            this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.chooseBtn1, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.chooseBtn2, 0, 1);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(63, 396);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(203, 64);
-            this.tableLayoutPanel4.TabIndex = 5;
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(15, 422);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 12);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "分支";
+            // 
+            // actionText
+            // 
+            this.actionText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.actionText.Location = new System.Drawing.Point(63, 38);
+            this.actionText.Multiline = true;
+            this.actionText.Name = "actionText";
+            this.actionText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.actionText.Size = new System.Drawing.Size(203, 317);
+            this.actionText.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 190);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "文字内容";
             // 
             // actionType
             // 
@@ -323,6 +343,37 @@
             this.setActionData.UseVisualStyleBackColor = true;
             this.setActionData.Click += new System.EventHandler(this.setActionData_Click);
             // 
+            // actionContentMenu
+            // 
+            this.actionContentMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newAcitonMI,
+            this.delActionMI});
+            this.actionContentMenu.Name = "actionContentMenu";
+            this.actionContentMenu.Size = new System.Drawing.Size(105, 52);
+            // 
+            // newAcitonMI
+            // 
+            this.newAcitonMI.Name = "newAcitonMI";
+            this.newAcitonMI.Size = new System.Drawing.Size(104, 24);
+            this.newAcitonMI.Text = "新建";
+            this.newAcitonMI.Click += new System.EventHandler(this.newAcitonMI_Click);
+            // 
+            // delActionMI
+            // 
+            this.delActionMI.Name = "delActionMI";
+            this.delActionMI.Size = new System.Drawing.Size(104, 24);
+            this.delActionMI.Text = "删除";
+            this.delActionMI.Click += new System.EventHandler(this.delActionMI_Click);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "";
+            this.columnHeader1.Width = 100;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Width = 200;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -340,10 +391,11 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.waitingSecond)).EndInit();
+            this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            this.tableLayoutPanel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.waitingSecond)).EndInit();
+            this.actionContentMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -373,6 +425,14 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TextBox actionType;
         private System.Windows.Forms.Button setActionData;
+        private System.Windows.Forms.ContextMenuStrip actionContentMenu;
+        private System.Windows.Forms.ToolStripMenuItem newAcitonMI;
+        private System.Windows.Forms.ToolStripMenuItem delActionMI;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
     }
 }
 
