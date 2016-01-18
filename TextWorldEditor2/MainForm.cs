@@ -56,16 +56,16 @@ namespace TextWorldEditor2
 
         private void SetTreeNodeByData(TreeNode node, StageTreeNode data)
         {
-            if(data.Id > 0)
+            if (data.Id > 0)
             {
                 var stage = this.m_content.GetStageById(data.Id);
-                if(stage != null)
+                if (stage != null)
                 {
                     node.Text = stage.Name;
                     node.Tag = stage;
                 }
             }
-            foreach( var cc in data.Nodes)
+            foreach (var cc in data.Nodes)
             {
                 var stage = this.m_content.GetStageById(cc.Id);
                 if (stage != null)
@@ -99,7 +99,7 @@ namespace TextWorldEditor2
                     bool have = false;
                     foreach (var dd in idList)
                     {
-                        if( dd == s.Id)
+                        if (dd == s.Id)
                         {
                             have = true;
                             break;
@@ -125,26 +125,6 @@ namespace TextWorldEditor2
 
             }
         }
-
-//         private void RefreshAllContent()
-//         {
-//             var root = this.contentTree.Nodes[0];
-//             root.Nodes.Clear();
-//             foreach (var s in this.m_content.Stages)
-//             {
-//                 var node = new TreeNode(s.Name);
-//                 root.Nodes.Add(node);
-//                 node.Tag = s;
-//                 if (this.contentTree.SelectedNode == null)
-//                 {
-//                     this.contentTree.SelectedNode = node;
-//                 }
-//             }
-//             if (this.m_content.Stages.Count() == 0)
-//             {
-//                 SetEditContentStage(null);
-//             }
-//         }
 
         private ContentStage m_editingStage = null;
 
@@ -320,7 +300,7 @@ namespace TextWorldEditor2
             stage.Name = "场景" + stage.Id.ToString();
             //刷新界面
             var root = this.contentTree.SelectedNode;
-            
+
             var node = new TreeNode(stage.Name);
 
             root.Nodes.Add(node);
@@ -330,14 +310,27 @@ namespace TextWorldEditor2
             this.contentTree.SelectedNode = node;
         }
 
+        private List<UInt32> GetTreeNodeStagesId(TreeNode tN)
+        {
+            List<UInt32> r = new List<UInt32>();
+            var s = tN.Tag as ContentStage;
+            if (s != null)
+                r.Add(s.Id);
+            foreach (var c in tN.Nodes)
+            {
+                r.AddRange(GetTreeNodeStagesId(c as TreeNode));
+            }
+            return r;
+        }
+
         private void delStageMI_Click(object sender, EventArgs e)
         {
             if (this.contentTree.SelectedNode != null
                 && this.contentTree.SelectedNode.Parent != null)
             {
-                var stage = this.contentTree.SelectedNode.Tag as ContentStage;
-                if (stage != null)
-                    this.m_content.DelStageById(stage.Id);
+                var stageIdList = GetTreeNodeStagesId(this.contentTree.SelectedNode);
+                foreach (var id in stageIdList)
+                    this.m_content.DelStageById(id);
                 this.contentTree.SelectedNode.Parent.Nodes.Remove(this.contentTree.SelectedNode);
             }
         }
@@ -464,7 +457,7 @@ namespace TextWorldEditor2
         {
             var r = new List<UInt32>();
             r.Add(this.Id);
-            foreach( var c in this.Nodes)
+            foreach (var c in this.Nodes)
             {
                 r.AddRange(c.GetAllId());
             }
