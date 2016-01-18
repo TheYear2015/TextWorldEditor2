@@ -256,7 +256,14 @@ namespace TextWorldEditor2
 
         private void delStageMI_Click(object sender, EventArgs e)
         {
-
+            if(this.contentTree.SelectedNode != null
+                && this.contentTree.SelectedNode.Parent != null)
+            {
+                var stage = this.contentTree.SelectedNode.Tag as ContentStage;
+                if(stage != null)
+                    this.m_content.DelStageById(stage.Id);
+                this.contentTree.SelectedNode.Parent.Nodes.Remove(this.contentTree.SelectedNode);
+            }
         }
 
         private void stageName_Leave(object sender, EventArgs e)

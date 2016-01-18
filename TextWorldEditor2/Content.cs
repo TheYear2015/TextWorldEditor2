@@ -126,14 +126,13 @@ namespace TextWorldEditor2
 
         public void DelStageById(UInt32 id)
         {
-            foreach (ContentStage x in this.m_stages.Where(m => m.Id == id))
-                this.m_stages.Remove(x);
+            this.m_stages.RemoveAll(i => i.Id == id);
         }
 
         public ContentStage GetStageById(UInt32 id)
         {
-            var l = this.m_stages.Where(m => m.Id == id);
-            return l.Count() > 0 ? l.ElementAt(0) : null;
+            var l = this.m_stages.First(m => m.Id == id);
+            return l;
         }
     }
 
