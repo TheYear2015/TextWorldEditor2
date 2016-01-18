@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,16 +33,7 @@ namespace TextWorldEditor2
 
         private void saveToolStripBtn_Click(object sender, EventArgs e)
         {
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(Content));
-            byte[] byteArr;
-            using (var ms = new MemoryStream())
-            {
-                serializer.WriteObject(ms, m_content);
-
-                byteArr = ms.ToArray();
-            }
-            string tt = (Encoding.UTF8.GetString(byteArr));
-
+            var tt = JsonConvert.SerializeObject(m_content, Formatting.Indented);
             var utf8 = new System.Text.UTF8Encoding(false);
             File.WriteAllText("ContentStage.pck", tt, utf8);
 
@@ -52,13 +44,8 @@ namespace TextWorldEditor2
             try
             {
                 string tt = File.ReadAllText("ContentStage.pck");
-                DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(Content));
-                using (MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(tt)))     //构造函数能够接受Stream参数，因此你可以用内存流，文件流等等创建
-                {
-                    this.m_content = serializer.ReadObject(ms) as Content;
-                    RefreshAllContent();
-                }
-
+                this.m_content = JsonConvert.DeserializeObject<Content>(tt);
+                RefreshAllContent();
             }
             catch
             {
@@ -114,6 +101,11 @@ namespace TextWorldEditor2
                     var lvi = new ListViewItem();
                     SetListViewItemActionInfo(i, stage.ContentList[i], lvi);
                     this.contentList.Items.Add(lvi);
+                    if(i == 0)
+                    {
+                        this.contentList.SelectedIndices.Clear();
+                        this.contentList.SelectedIndices.Add(0);
+                    }
                 }
             }
             this.contentList.EndUpdate();

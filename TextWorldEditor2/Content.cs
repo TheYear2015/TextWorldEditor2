@@ -18,7 +18,7 @@ namespace TextWorldEditor2
             set { m_type = value; }
         }
         private string m_text = "";
-        [DataMember(Order = 1)]
+        [DataMember(Order = 10)]
         public string Text
         {
             get { return m_text; }
