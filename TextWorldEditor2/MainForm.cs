@@ -77,6 +77,7 @@ namespace TextWorldEditor2
             }
         }
 
+
         private void loadToolStripBtn_Click(object sender, EventArgs e)
         {
             try
@@ -91,6 +92,32 @@ namespace TextWorldEditor2
                 root.Nodes.Clear();
 
                 SetTreeNodeByData(root, rootD);
+
+                var idList = rootD.GetAllId();
+                foreach (var s in this.m_content.Stages)
+                {
+                    bool have = false;
+                    foreach (var dd in idList)
+                    {
+                        if( dd == s.Id)
+                        {
+                            have = true;
+                            break;
+                        }
+                    }
+                    if (!have)
+                    {
+                        var node = new TreeNode(s.Name);
+                        root.Nodes.Add(node);
+                        node.Text = s.Name;
+                        node.Tag = s;
+                        if (this.contentTree.SelectedNode == null)
+                        {
+                            this.contentTree.SelectedNode = node;
+                        }
+                    }
+
+                }
 
             }
             catch
@@ -431,6 +458,21 @@ namespace TextWorldEditor2
             get { return m_nodes; }
             set { m_nodes = value; }
         }
+
+
+        public List<UInt32> GetAllId()
+        {
+            var r = new List<UInt32>();
+            r.Add(this.Id);
+            foreach( var c in this.Nodes)
+            {
+                r.AddRange(c.GetAllId());
+            }
+
+            return r;
+
+        }
+
     };
 
 
