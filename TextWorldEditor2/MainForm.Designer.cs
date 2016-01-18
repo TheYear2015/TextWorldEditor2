@@ -62,7 +62,7 @@
             this.actionText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.actionType = new System.Windows.Forms.TextBox();
-            this.setActionData = new System.Windows.Forms.Button();
+            this.setActionText = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
@@ -256,24 +256,24 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 1, 3);
-            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 1, 4);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label4, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.label3, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.label4, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.label3, 0, 4);
             this.tableLayoutPanel2.Controls.Add(this.actionText, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.actionType, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.setActionData, 1, 4);
+            this.tableLayoutPanel2.Controls.Add(this.setActionText, 1, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(545, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 5;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(330, 379);
             this.tableLayoutPanel2.TabIndex = 7;
             // 
@@ -284,7 +284,7 @@
             this.tableLayoutPanel4.Controls.Add(this.chooseBtn1, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.chooseBtn2, 0, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(63, 277);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(63, 312);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -319,7 +319,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.60302F));
             this.tableLayoutPanel3.Controls.Add(this.waitingSecond, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label5, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(63, 242);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(63, 277);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -346,6 +346,7 @@
             this.waitingSecond.Size = new System.Drawing.Size(120, 21);
             this.waitingSecond.TabIndex = 1;
             this.waitingSecond.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.waitingSecond.Leave += new System.EventHandler(this.waitingSecond_Leave);
             // 
             // label5
             // 
@@ -371,7 +372,7 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 250);
+            this.label4.Location = new System.Drawing.Point(15, 285);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 12);
             this.label4.TabIndex = 0;
@@ -381,7 +382,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 303);
+            this.label3.Location = new System.Drawing.Point(15, 338);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 4;
@@ -394,14 +395,14 @@
             this.actionText.Multiline = true;
             this.actionText.Name = "actionText";
             this.actionText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.actionText.Size = new System.Drawing.Size(264, 198);
+            this.actionText.Size = new System.Drawing.Size(264, 203);
             this.actionText.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 131);
+            this.label2.Location = new System.Drawing.Point(3, 133);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 3;
@@ -415,17 +416,18 @@
             this.actionType.Size = new System.Drawing.Size(136, 21);
             this.actionType.TabIndex = 6;
             this.actionType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.actionType.Leave += new System.EventHandler(this.actionType_Leave);
             // 
-            // setActionData
+            // setActionText
             // 
-            this.setActionData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.setActionData.Location = new System.Drawing.Point(140, 353);
-            this.setActionData.Name = "setActionData";
-            this.setActionData.Size = new System.Drawing.Size(187, 23);
-            this.setActionData.TabIndex = 7;
-            this.setActionData.Text = "设置";
-            this.setActionData.UseVisualStyleBackColor = true;
-            this.setActionData.Click += new System.EventHandler(this.setActionData_Click);
+            this.setActionText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.setActionText.Location = new System.Drawing.Point(140, 248);
+            this.setActionText.Name = "setActionText";
+            this.setActionText.Size = new System.Drawing.Size(187, 23);
+            this.setActionText.TabIndex = 7;
+            this.setActionText.Text = "设置文字内容";
+            this.setActionText.UseVisualStyleBackColor = true;
+            this.setActionText.Click += new System.EventHandler(this.SetActionTextClick);
             // 
             // tableLayoutPanel5
             // 
@@ -553,7 +555,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TextBox actionType;
-        private System.Windows.Forms.Button setActionData;
+        private System.Windows.Forms.Button setActionText;
         private System.Windows.Forms.ContextMenuStrip actionContentMenu;
         private System.Windows.Forms.ToolStripMenuItem newAcitonMI;
         private System.Windows.Forms.ToolStripMenuItem delActionMI;

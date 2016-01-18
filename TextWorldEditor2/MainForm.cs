@@ -75,7 +75,7 @@ namespace TextWorldEditor2
                 var node = new TreeNode(s.Name);
                 root.Nodes.Add(node);
                 node.Tag = s;
-                if(this.contentTree.SelectedNode == null)
+                if (this.contentTree.SelectedNode == null)
                 {
                     this.contentTree.SelectedNode = node;
                 }
@@ -107,7 +107,7 @@ namespace TextWorldEditor2
             this.contentList.BeginUpdate();
             this.contentList.Items.Clear();
 
-            if(stage != null)
+            if (stage != null)
             {
                 for (int i = 0; i < stage.ContentList.Count(); i++)
                 {
@@ -117,27 +117,31 @@ namespace TextWorldEditor2
                 }
             }
             this.contentList.EndUpdate();
-       }
+        }
 
         private void SetEditContentAction(ContentAction action)
         {
-            if(action != null)
+            if (action != null)
             {
                 this.actionType.Text = action.Type.ToString();
                 this.actionText.Text = action.Text;
                 this.waitingSecond.Value = (decimal)(action.WaitingMS * 0.001);
+                this.chooseBtn1.Text = action.GoId[0] != 0 ? action.GoString[0] : "--";
+                this.chooseBtn2.Text = action.GoId[1] != 0 ? action.GoString[1] : "--";
             }
             else
             {
                 this.actionType.Text = "";
                 this.actionText.Text = "";
                 this.waitingSecond.Value = 0;
+                this.chooseBtn1.Text = "--";
+                this.chooseBtn2.Text = "--";
             }
         }
 
         private void contentTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if(this.contentTree.SelectedNode != null)
+            if (this.contentTree.SelectedNode != null)
             {
                 SetEditContentStage((ContentStage)this.contentTree.SelectedNode.Tag);
             }
@@ -152,24 +156,15 @@ namespace TextWorldEditor2
 
         }
 
-        private void setActionData_Click(object sender, EventArgs e)
+        private void SetActionTextClick(object sender, EventArgs e)
         {
-            if (this.contentList.SelectedIndices.Count > 0)
+            int index = -1;
+            var action = GetEditingAction(out index);
+            if (action != null)
             {
-                var index = this.contentList.SelectedIndices[0];
-                var action = (ContentAction)this.contentList.Items[index].Tag;
                 action.Type = 0;
-                try
-                {
-                    action.Type = UInt32.Parse(this.actionType.Text);
-                    action.Text = this.actionText.Text;
-                    action.WaitingMS = (UInt32)(this.waitingSecond.Value * 1000);
-
-                    SetListViewItemActionInfo(index, action, this.contentList.Items[index]);
-                }
-                catch 
-                {
-                }
+                action.Text = this.actionText.Text;
+                SetListViewItemActionInfo(index, action, this.contentList.Items[index]);
             }
         }
 
@@ -181,7 +176,7 @@ namespace TextWorldEditor2
                 SetEditContentAction((ContentAction)this.contentList.Items[index].Tag);
 
             }
-            else 
+            else
             {
                 SetEditContentAction(null);
             }
@@ -203,7 +198,7 @@ namespace TextWorldEditor2
 
             var go1 = new ListViewItem.ListViewSubItem();
             if (action.GoId[0] != 0)
-                go1.Text = action.GoString[0]; 
+                go1.Text = action.GoString[0];
             lvi.SubItems.Add(go1);
 
             var go2 = new ListViewItem.ListViewSubItem();
@@ -274,10 +269,10 @@ namespace TextWorldEditor2
 
         private void stageName_Leave(object sender, EventArgs e)
         {
-            if(m_editingStage != null)
+            if (m_editingStage != null)
             {
                 m_editingStage.Name = this.stageName.Text;
-                if(this.contentTree.SelectedNode != null
+                if (this.contentTree.SelectedNode != null
                     && this.contentTree.SelectedNode.Tag == m_editingStage)
                 {
                     this.contentTree.SelectedNode.Text = m_editingStage.Name;
@@ -287,12 +282,86 @@ namespace TextWorldEditor2
 
         private void chooseBtn1_Click(object sender, EventArgs e)
         {
-
+            EditGoToStageInfo(0);
         }
 
         private void chooseBtn2_Click(object sender, EventArgs e)
         {
+            EditGoToStageInfo(1);
+        }
 
+        private void EditGoToStageInfo(int i)
+        {
+            int index = -1;
+            var action = GetEditingAction(out index);
+            if (action != null)
+            {
+                var dlg = new ChooseStageDlg();
+                dlg.SetStageTree(this.contentTree);
+                dlg.ChooseStage = m_content.GetStageById(action.GoId[i]);
+                dlg.ChooseText = action.GoString[i];
+                if (dlg.ShowDialog(this) == DialogResult.OK)
+                {
+                    if (dlg.ChooseStage != null)
+                    {
+                        action.GoId[i] = dlg.ChooseStage.Id;
+                        action.GoString[i] = dlg.ChooseText;
+
+                    }
+                    else
+                    {
+                        action.GoId[i] = 0;
+                        action.GoString[i] = "";
+
+                    }
+                    SetListViewItemActionInfo(index, action, this.contentList.Items[index]);
+                }
+                else
+                {
+                }
+            }
+        }
+
+        private void waitingSecond_Leave(object sender, EventArgs e)
+        {
+            int index = -1;
+            var action = GetEditingAction(out index);
+            if (action != null)
+            {
+                action.WaitingMS = (UInt32)(this.waitingSecond.Value * 1000);
+                SetListViewItemActionInfo(index, action, this.contentList.Items[index]);
+            }
+
+        }
+
+        private ContentAction GetEditingAction(out int index)
+        {
+            if (this.contentList.SelectedIndices.Count > 0)
+            {
+                index = this.contentList.SelectedIndices[0];
+                return this.contentList.Items[index].Tag as ContentAction;
+            }
+            index = -1;
+            return null;
+        }
+
+        private void actionType_Leave(object sender, EventArgs e)
+        {
+            int index = -1;
+            var action = GetEditingAction(out index);
+            if (action != null)
+            {
+                try
+                {
+                    action.Type = UInt32.Parse(this.actionType.Text);
+                    SetListViewItemActionInfo(index, action, this.contentList.Items[index]);
+
+                }
+                catch
+                {
+
+                }
+            }
         }
 
     }

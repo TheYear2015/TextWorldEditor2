@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace TextWorldEditor2
 {
     [DataContract]
-    class ContentAction
+    public class ContentAction
     {
         private UInt32 m_type;
         [DataMember(Order = 0, IsRequired = true)]
@@ -59,7 +59,7 @@ namespace TextWorldEditor2
     /// 
     /// </summary>
     [DataContract]
-    class ContentStage
+    public class ContentStage
     {
         private UInt32 m_id = 0;
         [DataMember(Order = 0, IsRequired = true)]
@@ -96,7 +96,7 @@ namespace TextWorldEditor2
     /// 内容管理器
     /// </summary>
     [DataContract]
-    class Content
+    public class Content
     {
         private UInt32 m_baseId = 0;
         [DataMember(Order = 0)]
