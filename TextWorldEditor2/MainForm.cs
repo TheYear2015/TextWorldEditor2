@@ -32,7 +32,7 @@ namespace TextWorldEditor2
             sn.Id = ((ContentStage)tN.Tag).Id;
             foreach (TreeNode n in tN.Nodes)
             {
-                InsertChildTreeNodeToData(tN, sn);
+                InsertChildTreeNodeToData(n, sn);
             }
             data.Nodes.Add(sn);
         }
@@ -62,6 +62,7 @@ namespace TextWorldEditor2
                 if(stage != null)
                 {
                     node.Text = stage.Name;
+                    node.Tag = stage;
                 }
             }
             foreach( var cc in data.Nodes)
@@ -291,9 +292,12 @@ namespace TextWorldEditor2
             var stage = this.m_content.NewStage();
             stage.Name = "场景" + stage.Id.ToString();
             //刷新界面
-            var root = this.contentTree.Nodes[0];
+            var root = this.contentTree.SelectedNode;
+            
             var node = new TreeNode(stage.Name);
+
             root.Nodes.Add(node);
+
             node.Tag = stage;
 
             this.contentTree.SelectedNode = node;
