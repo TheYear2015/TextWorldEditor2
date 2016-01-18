@@ -26,7 +26,7 @@ namespace TextWorldEditor2
         }
         private UInt32[] m_goId = new UInt32[2];
          [DataMember(Order = 2)]
-        public UInt32[] Id
+        public UInt32[] GoId
         {
             get { return m_goId; }
             set { m_goId = value; }
@@ -44,6 +44,14 @@ namespace TextWorldEditor2
         {
             get { return m_waitingMS; }
             set { m_waitingMS = value; }
+        }
+
+        public ContentAction()
+        {
+            for (int i = 0; i < m_goString.Count(); ++i )
+            {
+                m_goString[i] = "";
+            }
         }
     }
 

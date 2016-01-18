@@ -21,7 +21,7 @@ namespace TextWorldEditor2
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            RefreshAllContent();
+            this.contentTree.Nodes.Add(new TreeNode("游戏"));
         }
 
         private void contentToolStripBtn_Click(object sender, EventArgs e)
@@ -68,16 +68,11 @@ namespace TextWorldEditor2
 
         private void RefreshAllContent()
         {
-            this.contentTree.Nodes.Clear();
-
-            //root
-
-            var root = new TreeNode("场景");
-            this.contentTree.Nodes.Add(root);
-
+            var root = this.contentTree.Nodes[0];
+            root.Nodes.Clear();
             foreach (var s in this.m_content.Stages)
             {
-                var node = new TreeNode("场景");
+                var node = new TreeNode(s.Name);
                 root.Nodes.Add(node);
                 node.Tag = s;
                 if(this.contentTree.SelectedNode == null)
@@ -96,6 +91,18 @@ namespace TextWorldEditor2
         private void SetEditContentStage(ContentStage stage)
         {
             m_editingStage = stage;
+
+            if (stage != null)
+            {
+                this.stageId.Text = stage.Id.ToString();
+                this.stageName.Text = stage.Name;
+            }
+            else
+            {
+                this.stageId.Text = "";
+                this.stageName.Text = "";
+            }
+
             SetEditContentAction(null);
             this.contentList.BeginUpdate();
             this.contentList.Items.Clear();
@@ -118,11 +125,13 @@ namespace TextWorldEditor2
             {
                 this.actionType.Text = action.Type.ToString();
                 this.actionText.Text = action.Text;
+                this.waitingSecond.Value = (decimal)(action.WaitingMS * 0.001);
             }
             else
             {
                 this.actionType.Text = "";
                 this.actionText.Text = "";
+                this.waitingSecond.Value = 0;
             }
         }
 
@@ -154,6 +163,7 @@ namespace TextWorldEditor2
                 {
                     action.Type = UInt32.Parse(this.actionType.Text);
                     action.Text = this.actionText.Text;
+                    action.WaitingMS = (UInt32)(this.waitingSecond.Value * 1000);
 
                     SetListViewItemActionInfo(index, action, this.contentList.Items[index]);
                 }
@@ -182,9 +192,25 @@ namespace TextWorldEditor2
             lvi.SubItems.Clear();
             lvi.ImageIndex = 0;
             lvi.Text = string.Format("Action{0:D2}", index);
+
             var info = new ListViewItem.ListViewSubItem();
-            info.Text = this.m_editingStage.ContentList[index].Text;
+            info.Text = action.Text;
             lvi.SubItems.Add(info);
+
+            var waittingSec = new ListViewItem.ListViewSubItem();
+            waittingSec.Text = (action.WaitingMS * 0.001).ToString();
+            lvi.SubItems.Add(waittingSec);
+
+            var go1 = new ListViewItem.ListViewSubItem();
+            if (action.GoId[0] != 0)
+                go1.Text = action.GoString[0]; 
+            lvi.SubItems.Add(go1);
+
+            var go2 = new ListViewItem.ListViewSubItem();
+            if (action.GoId[1] != 0)
+                go2.Text = action.GoString[1];
+            lvi.SubItems.Add(go2);
+
 
             lvi.Tag = this.m_editingStage.ContentList[index];
         }
@@ -231,15 +257,40 @@ namespace TextWorldEditor2
         private void newStageMI_Click(object sender, EventArgs e)
         {
             var stage = this.m_content.NewStage();
+            stage.Name = "场景" + stage.Id.ToString();
             //刷新界面
-
             var root = this.contentTree.Nodes[0];
-            var node = new TreeNode("场景");
+            var node = new TreeNode(stage.Name);
             root.Nodes.Add(node);
             node.Tag = stage;
+
+            this.contentTree.SelectedNode = node;
         }
 
         private void delStageMI_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void stageName_Leave(object sender, EventArgs e)
+        {
+            if(m_editingStage != null)
+            {
+                m_editingStage.Name = this.stageName.Text;
+                if(this.contentTree.SelectedNode != null
+                    && this.contentTree.SelectedNode.Tag == m_editingStage)
+                {
+                    this.contentTree.SelectedNode.Text = m_editingStage.Name;
+                }
+            }
+        }
+
+        private void chooseBtn1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chooseBtn2_Click(object sender, EventArgs e)
         {
 
         }
