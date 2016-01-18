@@ -21,21 +21,22 @@ namespace TextWorldEditor2
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            RefreshAllContent();
         }
 
         private void contentToolStripBtn_Click(object sender, EventArgs e)
         {
         }
 
-        private ContentStage m_contentStage = new ContentStage();
+        private Content m_content = new Content();
 
         private void saveToolStripBtn_Click(object sender, EventArgs e)
         {
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(ContentStage));
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(Content));
             byte[] byteArr;
             using (var ms = new MemoryStream())
             {
-                serializer.WriteObject(ms, m_contentStage);
+                serializer.WriteObject(ms, m_content);
 
                 byteArr = ms.ToArray();
             }
@@ -51,10 +52,11 @@ namespace TextWorldEditor2
             try
             {
                 string tt = File.ReadAllText("ContentStage.pck");
-                DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(ContentStage));
+                DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(Content));
                 using (MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(tt)))     //构造函数能够接受Stream参数，因此你可以用内存流，文件流等等创建
                 {
-                    m_contentStage = serializer.ReadObject(ms) as ContentStage;
+                    this.m_content = serializer.ReadObject(ms) as Content;
+                    RefreshAllContent();
                 }
 
             }
@@ -63,6 +65,52 @@ namespace TextWorldEditor2
 
             }
         }
+
+        private void RefreshAllContent()
+        {
+            this.contentTree.Nodes.Clear();
+
+            //root
+
+            var root = new TreeNode("场景");
+            this.contentTree.Nodes.Add(root);
+
+            foreach (var s in this.m_content.Stages)
+            {
+                var node = new TreeNode("场景");
+                root.Nodes.Add(node);
+                node.Tag = s;
+                if(this.contentTree.SelectedNode == null)
+                {
+                    this.contentTree.SelectedNode = node;
+                }
+            }
+            if (this.m_content.Stages.Count() == 0)
+            {
+                SetEditContentStage(null);
+            }
+        }
+
+        private ContentStage m_editingStage = null;
+
+        private void SetEditContentStage(ContentStage stage)
+        {
+            m_editingStage = stage;
+            SetEditContentAction(null);
+            this.contentList.BeginUpdate();
+            this.contentList.Items.Clear();
+
+            if(stage != null)
+            {
+                for (int i = 0; i < stage.ContentList.Count(); i++)
+                {
+                    var lvi = new ListViewItem();
+                    SetListViewItemActionInfo(i, stage.ContentList[i], lvi);
+                    this.contentList.Items.Add(lvi);
+                }
+            }
+            this.contentList.EndUpdate();
+       }
 
         private void SetEditContentAction(ContentAction action)
         {
@@ -80,7 +128,14 @@ namespace TextWorldEditor2
 
         private void contentTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
-
+            if(this.contentTree.SelectedNode != null)
+            {
+                SetEditContentStage((ContentStage)this.contentTree.SelectedNode.Tag);
+            }
+            else
+            {
+                SetEditContentStage(null);
+            }
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -126,27 +181,27 @@ namespace TextWorldEditor2
         {
             lvi.SubItems.Clear();
             lvi.ImageIndex = 0;
-            lvi.Text = string.Format("action{0:D2}", index);
+            lvi.Text = string.Format("Action{0:D2}", index);
             var info = new ListViewItem.ListViewSubItem();
-            info.Text = m_contentStage.ContentList[index].Text;
+            info.Text = this.m_editingStage.ContentList[index].Text;
             lvi.SubItems.Add(info);
 
-            lvi.Tag = m_contentStage.ContentList[index];
+            lvi.Tag = this.m_editingStage.ContentList[index];
         }
 
         private void newAcitonMI_Click(object sender, EventArgs e)
         {
             var action = new ContentAction();
 
-            m_contentStage.ContentList.Add(action);
+            this.m_editingStage.ContentList.Add(action);
 
             this.contentList.BeginUpdate();
             this.contentList.Items.Clear();
 
-            for (int i = 0; i < m_contentStage.ContentList.Count(); i++)
+            for (int i = 0; i < this.m_editingStage.ContentList.Count(); i++)
             {
                 var lvi = new ListViewItem();
-                SetListViewItemActionInfo(i, m_contentStage.ContentList[i], lvi);
+                SetListViewItemActionInfo(i, this.m_editingStage.ContentList[i], lvi);
                 this.contentList.Items.Add(lvi);
             }
             this.contentList.EndUpdate();
@@ -160,7 +215,7 @@ namespace TextWorldEditor2
                 try
                 {
                     this.contentList.Items.RemoveAt(index);
-                    m_contentStage.ContentList.RemoveAt(index);
+                    this.m_editingStage.ContentList.RemoveAt(index);
                     SetEditContentAction(null);
                 }
                 catch
@@ -171,6 +226,22 @@ namespace TextWorldEditor2
             {
                 SetEditContentAction(null);
             }
+        }
+
+        private void newStageMI_Click(object sender, EventArgs e)
+        {
+            var stage = this.m_content.NewStage();
+            //刷新界面
+
+            var root = this.contentTree.Nodes[0];
+            var node = new TreeNode("场景");
+            root.Nodes.Add(node);
+            node.Tag = stage;
+        }
+
+        private void delStageMI_Click(object sender, EventArgs e)
+        {
+
         }
 
     }
