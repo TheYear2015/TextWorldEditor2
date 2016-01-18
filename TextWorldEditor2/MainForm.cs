@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -432,6 +433,175 @@ namespace TextWorldEditor2
             }
         }
 
+        TreeNode dragDropTreeNode = null;
+
+        private void contentTree_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            TreeNode tn = e.Item as TreeNode;
+            if ((e.Button == MouseButtons.Left) && (tn != null) && (tn.Parent != null)) //根节点不允许拖放操作。 
+            {
+                dragDropTreeNode = tn;
+                this.contentTree.DoDragDrop(tn, DragDropEffects.Copy | DragDropEffects.Move | DragDropEffects.Link);
+            } 
+        }
+
+        private void contentTree_DragOver(object sender, DragEventArgs e)
+        {
+            //当光标悬停在 TreeView 控件上时，展开该控件中的 TreeNode 
+            Point p = this.contentTree.PointToClient(Control.MousePosition);
+            TreeNode tn = this.contentTree.GetNodeAt(p);
+            if (tn != null)
+            {
+                if (this.dragDropTreeNode != tn) //移动到新的节点 
+                {
+                    if (tn.Nodes.Count > 0 && tn.IsExpanded == false)
+                    {
+                        //this.startTime = DateTime.Now;//设置新的起始时间 
+                    }
+                }
+                else
+                {
+                    if (tn.Nodes.Count > 0 && tn.IsExpanded == false/* && this.startTime != DateTime.MinValue*/)
+                    {
+                       // TimeSpan ts = DateTime.Now - this.startTime;
+                       // if (ts.TotalMilliseconds >= 1000) //一秒 
+                        {
+                            tn.Expand();
+                            //this.startTime = DateTime.MinValue;
+                        }
+                    }
+                }
+
+            }
+            //设置拖放标签Effect状态 
+            if (tn != null)//&& (tn != this.treeView.SelectedNode)) //当控件移动到空白处时，设置不可用。 
+            {
+                if ((e.AllowedEffect & DragDropEffects.Move) != 0)
+                {
+                    e.Effect = DragDropEffects.Move;
+                }
+                if (((e.AllowedEffect & DragDropEffects.Copy) != 0) && ((e.KeyState & 0x08) != 0))//Ctrl key 
+                {
+                    e.Effect = DragDropEffects.Copy;
+                }
+                if (((e.AllowedEffect & DragDropEffects.Link) != 0) && ((e.KeyState & 0x08) != 0) && ((e.KeyState & 0x04) != 0))//Ctrl key + Shift key 
+                {
+                    e.Effect = DragDropEffects.Link;
+                }
+                if (e.Data.GetDataPresent(typeof(TreeNode)))//拖动的是TreeNode 
+                {
+
+                    TreeNode parND = tn;//判断是否拖到了子项 
+                    bool isChildNode = false;
+                    while (parND.Parent != null)
+                    {
+                        parND = parND.Parent;
+                        if (parND == this.contentTree.SelectedNode)
+                        {
+                            isChildNode = true;
+                            break;
+                        }
+                    }
+                    if (isChildNode)
+                    {
+                        e.Effect = DragDropEffects.None;
+                    }
+                }
+                else if (e.Data.GetDataPresent(typeof(ListViewItem)))//拖动的是ListViewItem 
+                {
+                    if (tn.Parent == null)
+                    {
+                        e.Effect = DragDropEffects.None;
+                    }
+                }
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+
+            //设置拖放目标TreeNode的背景色 
+            if (e.Effect == DragDropEffects.None)
+            {
+                if (this.dragDropTreeNode != null) //取消被放置的节点高亮显示 
+                {
+                    this.dragDropTreeNode.BackColor = SystemColors.Window;
+                    this.dragDropTreeNode.ForeColor = SystemColors.WindowText;
+                    this.dragDropTreeNode = null;
+                }
+            }
+            else
+            {
+                if (tn != null)
+                {
+                    if (this.dragDropTreeNode != null)
+                    {
+                        if (this.dragDropTreeNode != tn)
+                        {
+                            this.dragDropTreeNode.BackColor = SystemColors.Window;//取消上一个被放置的节点高亮显示 
+                            this.dragDropTreeNode.ForeColor = SystemColors.WindowText;
+                            this.dragDropTreeNode = tn;//设置为新的节点 
+                            this.dragDropTreeNode.BackColor = SystemColors.Highlight;
+                            this.dragDropTreeNode.ForeColor = SystemColors.HighlightText;
+                        }
+                    }
+                    else
+                    {
+                        this.dragDropTreeNode = tn;//设置为新的节点 
+                        this.dragDropTreeNode.BackColor = SystemColors.Highlight;
+                        this.dragDropTreeNode.ForeColor = SystemColors.HighlightText;
+                    }
+                }
+            } 
+        }
+
+        private void contentTree_DragDrop(object sender, DragEventArgs e)
+        {
+            if (this.dragDropTreeNode != null)
+            {
+                if (e.Data.GetDataPresent(typeof(TreeNode)))
+                {
+
+                    TreeNode tn = (TreeNode)e.Data.GetData(typeof(TreeNode));
+                    tn.Remove();//从原父节点移除被拖得节点 
+                    this.dragDropTreeNode.Nodes.Add(tn);//添加被拖得节点到新节点下面 
+
+                    if (this.dragDropTreeNode.IsExpanded == false)
+                    {
+                        this.dragDropTreeNode.Expand();//展开节点 
+                    }
+
+                }
+                else if (e.Data.GetDataPresent(typeof(ListViewItem)))
+                {
+                    if (this.dragDropTreeNode.Parent != null)
+                    {
+
+                        ListViewItem listViewItem = (ListViewItem)e.Data.GetData(typeof(ListViewItem));
+                        listViewItem.Remove();
+                    }
+                }
+                //取消被放置的节点高亮显示 
+                this.dragDropTreeNode.BackColor = SystemColors.Window;
+                this.dragDropTreeNode.ForeColor = SystemColors.WindowText;
+                this.dragDropTreeNode = null;
+            }
+        }
+
+        private void contentTree_DragEnter(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void contentTree_DragLeave(object sender, EventArgs e)
+        {
+            if (this.dragDropTreeNode != null) //在按下{ESC}，取消被放置的节点高亮显示 
+            {
+                this.dragDropTreeNode.BackColor = SystemColors.Window;
+                this.dragDropTreeNode.ForeColor = SystemColors.WindowText;
+                this.dragDropTreeNode = null;
+            } 
+        }
     }
 
     [DataContract]
