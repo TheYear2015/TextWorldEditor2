@@ -1,14 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Json;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
 using System.Windows.Forms;
 
 namespace TextWorldEditor2
@@ -31,12 +26,54 @@ namespace TextWorldEditor2
 
         private Content m_content = new Content();
 
+        private void InsertChildTreeNodeToData(TreeNode tN, StageTreeNode data)
+        {
+            var sn = new StageTreeNode();
+            sn.Id = ((ContentStage)tN.Tag).Id;
+            foreach (TreeNode n in tN.Nodes)
+            {
+                InsertChildTreeNodeToData(tN, sn);
+            }
+            data.Nodes.Add(sn);
+        }
+
         private void saveToolStripBtn_Click(object sender, EventArgs e)
         {
             var tt = JsonConvert.SerializeObject(m_content, Formatting.Indented);
             var utf8 = new System.Text.UTF8Encoding(false);
             File.WriteAllText("ContentStage.pck", tt, utf8);
 
+            //保存编辑树的结构
+            StageTreeNode root = new StageTreeNode();
+            foreach (TreeNode n in this.contentTree.Nodes[0].Nodes)
+            {
+                InsertChildTreeNodeToData(n, root);
+            }
+            var ss = JsonConvert.SerializeObject(root, Formatting.Indented);
+            File.WriteAllText("ContentStage.edt", ss, utf8);
+
+        }
+
+        private void SetTreeNodeByData(TreeNode node, StageTreeNode data)
+        {
+            if(data.Id > 0)
+            {
+                var stage = this.m_content.GetStageById(data.Id);
+                if(stage != null)
+                {
+                    node.Text = stage.Name;
+                }
+            }
+            foreach( var cc in data.Nodes)
+            {
+                var stage = this.m_content.GetStageById(cc.Id);
+                if (stage != null)
+                {
+                    var cN = new TreeNode();
+                    SetTreeNodeByData(cN, cc);
+                    node.Nodes.Add(cN);
+                }
+            }
         }
 
         private void loadToolStripBtn_Click(object sender, EventArgs e)
@@ -45,7 +82,15 @@ namespace TextWorldEditor2
             {
                 string tt = File.ReadAllText("ContentStage.pck");
                 this.m_content = JsonConvert.DeserializeObject<Content>(tt);
-                RefreshAllContent();
+
+                string ss = File.ReadAllText("ContentStage.edt");
+                StageTreeNode rootD = JsonConvert.DeserializeObject<StageTreeNode>(ss);
+
+                var root = this.contentTree.Nodes[0];
+                root.Nodes.Clear();
+
+                SetTreeNodeByData(root, rootD);
+
             }
             catch
             {
@@ -53,25 +98,25 @@ namespace TextWorldEditor2
             }
         }
 
-        private void RefreshAllContent()
-        {
-            var root = this.contentTree.Nodes[0];
-            root.Nodes.Clear();
-            foreach (var s in this.m_content.Stages)
-            {
-                var node = new TreeNode(s.Name);
-                root.Nodes.Add(node);
-                node.Tag = s;
-                if (this.contentTree.SelectedNode == null)
-                {
-                    this.contentTree.SelectedNode = node;
-                }
-            }
-            if (this.m_content.Stages.Count() == 0)
-            {
-                SetEditContentStage(null);
-            }
-        }
+//         private void RefreshAllContent()
+//         {
+//             var root = this.contentTree.Nodes[0];
+//             root.Nodes.Clear();
+//             foreach (var s in this.m_content.Stages)
+//             {
+//                 var node = new TreeNode(s.Name);
+//                 root.Nodes.Add(node);
+//                 node.Tag = s;
+//                 if (this.contentTree.SelectedNode == null)
+//                 {
+//                     this.contentTree.SelectedNode = node;
+//                 }
+//             }
+//             if (this.m_content.Stages.Count() == 0)
+//             {
+//                 SetEditContentStage(null);
+//             }
+//         }
 
         private ContentStage m_editingStage = null;
 
@@ -101,7 +146,7 @@ namespace TextWorldEditor2
                     var lvi = new ListViewItem();
                     SetListViewItemActionInfo(i, stage.ContentList[i], lvi);
                     this.contentList.Items.Add(lvi);
-                    if(i == 0)
+                    if (i == 0)
                     {
                         this.contentList.SelectedIndices.Clear();
                         this.contentList.SelectedIndices.Add(0);
@@ -256,11 +301,11 @@ namespace TextWorldEditor2
 
         private void delStageMI_Click(object sender, EventArgs e)
         {
-            if(this.contentTree.SelectedNode != null
+            if (this.contentTree.SelectedNode != null
                 && this.contentTree.SelectedNode.Parent != null)
             {
                 var stage = this.contentTree.SelectedNode.Tag as ContentStage;
-                if(stage != null)
+                if (stage != null)
                     this.m_content.DelStageById(stage.Id);
                 this.contentTree.SelectedNode.Parent.Nodes.Remove(this.contentTree.SelectedNode);
             }
@@ -364,4 +409,25 @@ namespace TextWorldEditor2
         }
 
     }
+
+    [DataContract]
+    class StageTreeNode
+    {
+        UInt32 m_Id = 0;
+        [DataMember]
+        public UInt32 Id
+        {
+            get { return m_Id; }
+            set { m_Id = value; }
+        }
+        List<StageTreeNode> m_nodes = new List<StageTreeNode>();
+        [DataMember]
+        public List<StageTreeNode> Nodes
+        {
+            get { return m_nodes; }
+            set { m_nodes = value; }
+        }
+    };
+
+
 }
