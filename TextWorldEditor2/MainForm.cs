@@ -278,15 +278,19 @@ namespace TextWorldEditor2
         {
             if (this.contentList.SelectedIndices.Count > 0)
             {
-                var index = this.contentList.SelectedIndices[0];
-                try
+                if (MessageBox.Show("确定要删除该动画", "提示", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
-                    this.contentList.Items.RemoveAt(index);
-                    this.m_editingStage.ContentList.RemoveAt(index);
-                    SetEditContentAction(null);
-                }
-                catch
-                {
+
+                    var index = this.contentList.SelectedIndices[0];
+                    try
+                    {
+                        this.contentList.Items.RemoveAt(index);
+                        this.m_editingStage.ContentList.RemoveAt(index);
+                        SetEditContentAction(null);
+                    }
+                    catch
+                    {
+                    }
                 }
             }
             else
@@ -329,10 +333,19 @@ namespace TextWorldEditor2
             if (this.contentTree.SelectedNode != null
                 && this.contentTree.SelectedNode.Parent != null)
             {
-                var stageIdList = GetTreeNodeStagesId(this.contentTree.SelectedNode);
-                foreach (var id in stageIdList)
-                    this.m_content.DelStageById(id);
-                this.contentTree.SelectedNode.Parent.Nodes.Remove(this.contentTree.SelectedNode);
+                var stage = this.contentTree.SelectedNode.Tag as ContentStage;
+                if (stage != null)
+                {
+                    if (MessageBox.Show(string.Format("确定要删除场景\"{0}\"及其子场景", stage.Name), "提示", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                    {
+
+                        var stageIdList = GetTreeNodeStagesId(this.contentTree.SelectedNode);
+                        foreach (var id in stageIdList)
+                            this.m_content.DelStageById(id);
+                        this.contentTree.SelectedNode.Parent.Nodes.Remove(this.contentTree.SelectedNode);
+                    }
+
+                }
             }
         }
 
@@ -441,8 +454,8 @@ namespace TextWorldEditor2
             if ((e.Button == MouseButtons.Left) && (tn != null) && (tn.Parent != null)) //根节点不允许拖放操作。 
             {
                 dragDropTreeNode = tn;
-                this.contentTree.DoDragDrop(tn, DragDropEffects.Copy | DragDropEffects.Move | DragDropEffects.Link);
-            } 
+                this.contentTree.DoDragDrop(tn, DragDropEffects.Move);
+            }
         }
 
         private void contentTree_DragOver(object sender, DragEventArgs e)
@@ -463,8 +476,8 @@ namespace TextWorldEditor2
                 {
                     if (tn.Nodes.Count > 0 && tn.IsExpanded == false/* && this.startTime != DateTime.MinValue*/)
                     {
-                       // TimeSpan ts = DateTime.Now - this.startTime;
-                       // if (ts.TotalMilliseconds >= 1000) //一秒 
+                        // TimeSpan ts = DateTime.Now - this.startTime;
+                        // if (ts.TotalMilliseconds >= 1000) //一秒 
                         {
                             tn.Expand();
                             //this.startTime = DateTime.MinValue;
@@ -552,7 +565,7 @@ namespace TextWorldEditor2
                         this.dragDropTreeNode.ForeColor = SystemColors.HighlightText;
                     }
                 }
-            } 
+            }
         }
 
         private void contentTree_DragDrop(object sender, DragEventArgs e)
@@ -600,7 +613,7 @@ namespace TextWorldEditor2
                 this.dragDropTreeNode.BackColor = SystemColors.Window;
                 this.dragDropTreeNode.ForeColor = SystemColors.WindowText;
                 this.dragDropTreeNode = null;
-            } 
+            }
         }
     }
 
