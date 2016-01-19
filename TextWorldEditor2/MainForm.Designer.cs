@@ -89,7 +89,7 @@
             this.testToolStripBtn});
             this.toolStrip.Location = new System.Drawing.Point(3, 3);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(878, 26);
+            this.toolStrip.Size = new System.Drawing.Size(878, 25);
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -98,7 +98,7 @@
             this.saveToolStripBtn.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripBtn.Image")));
             this.saveToolStripBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripBtn.Name = "saveToolStripBtn";
-            this.saveToolStripBtn.Size = new System.Drawing.Size(58, 23);
+            this.saveToolStripBtn.Size = new System.Drawing.Size(55, 22);
             this.saveToolStripBtn.Text = "Save";
             this.saveToolStripBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.saveToolStripBtn.Click += new System.EventHandler(this.saveToolStripBtn_Click);
@@ -108,7 +108,7 @@
             this.loadToolStripBtn.Image = ((System.Drawing.Image)(resources.GetObject("loadToolStripBtn.Image")));
             this.loadToolStripBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.loadToolStripBtn.Name = "loadToolStripBtn";
-            this.loadToolStripBtn.Size = new System.Drawing.Size(59, 23);
+            this.loadToolStripBtn.Size = new System.Drawing.Size(57, 22);
             this.loadToolStripBtn.Text = "Load";
             this.loadToolStripBtn.Click += new System.EventHandler(this.loadToolStripBtn_Click);
             // 
@@ -118,7 +118,7 @@
             this.testToolStripBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.testToolStripBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.testToolStripBtn.Name = "testToolStripBtn";
-            this.testToolStripBtn.Size = new System.Drawing.Size(54, 23);
+            this.testToolStripBtn.Size = new System.Drawing.Size(52, 22);
             this.testToolStripBtn.Text = "Test";
             this.testToolStripBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.testToolStripBtn.Click += new System.EventHandler(this.contentToolStripBtn_Click);
@@ -132,7 +132,7 @@
             this.contentTree.HideSelection = false;
             this.contentTree.Location = new System.Drawing.Point(3, 3);
             this.contentTree.Name = "contentTree";
-            this.contentTree.Size = new System.Drawing.Size(265, 378);
+            this.contentTree.Size = new System.Drawing.Size(265, 379);
             this.contentTree.TabIndex = 1;
             this.contentTree.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.contentTree_ItemDrag);
             this.contentTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.contentTree_AfterSelect);
@@ -147,19 +147,19 @@
             this.newStageMI,
             this.delStageMI});
             this.stageContextMenu.Name = "stageContextMenu";
-            this.stageContextMenu.Size = new System.Drawing.Size(105, 52);
+            this.stageContextMenu.Size = new System.Drawing.Size(101, 48);
             // 
             // newStageMI
             // 
             this.newStageMI.Name = "newStageMI";
-            this.newStageMI.Size = new System.Drawing.Size(104, 24);
+            this.newStageMI.Size = new System.Drawing.Size(100, 22);
             this.newStageMI.Text = "添加";
             this.newStageMI.Click += new System.EventHandler(this.newStageMI_Click);
             // 
             // delStageMI
             // 
             this.delStageMI.Name = "delStageMI";
-            this.delStageMI.Size = new System.Drawing.Size(104, 24);
+            this.delStageMI.Size = new System.Drawing.Size(100, 22);
             this.delStageMI.Text = "删除";
             this.delStageMI.Click += new System.EventHandler(this.delStageMI_Click);
             // 
@@ -181,7 +181,7 @@
             this.contentList.Location = new System.Drawing.Point(3, 76);
             this.contentList.MultiSelect = false;
             this.contentList.Name = "contentList";
-            this.contentList.Size = new System.Drawing.Size(265, 305);
+            this.contentList.Size = new System.Drawing.Size(265, 306);
             this.contentList.SmallImageList = this.stageSmallImageList;
             this.contentList.TabIndex = 2;
             this.contentList.UseCompatibleStateImageBehavior = false;
@@ -217,19 +217,19 @@
             this.newAcitonMI,
             this.delActionMI});
             this.actionContentMenu.Name = "actionContentMenu";
-            this.actionContentMenu.Size = new System.Drawing.Size(105, 52);
+            this.actionContentMenu.Size = new System.Drawing.Size(101, 48);
             // 
             // newAcitonMI
             // 
             this.newAcitonMI.Name = "newAcitonMI";
-            this.newAcitonMI.Size = new System.Drawing.Size(104, 24);
+            this.newAcitonMI.Size = new System.Drawing.Size(100, 22);
             this.newAcitonMI.Text = "新建";
             this.newAcitonMI.Click += new System.EventHandler(this.newAcitonMI_Click);
             // 
             // delActionMI
             // 
             this.delActionMI.Name = "delActionMI";
-            this.delActionMI.Size = new System.Drawing.Size(104, 24);
+            this.delActionMI.Size = new System.Drawing.Size(100, 22);
             this.delActionMI.Text = "删除";
             this.delActionMI.Click += new System.EventHandler(this.delActionMI_Click);
             // 
@@ -249,11 +249,11 @@
             this.tableLayoutPanel1.Controls.Add(this.contentTree, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 29);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 28);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(878, 384);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(878, 385);
             this.tableLayoutPanel1.TabIndex = 4;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
@@ -280,7 +280,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(330, 378);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(330, 379);
             this.tableLayoutPanel2.TabIndex = 7;
             // 
             // tableLayoutPanel4
@@ -290,7 +290,7 @@
             this.tableLayoutPanel4.Controls.Add(this.chooseBtn1, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.chooseBtn2, 0, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(63, 311);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(63, 312);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -325,7 +325,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.60302F));
             this.tableLayoutPanel3.Controls.Add(this.waitingSecond, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label5, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(63, 276);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(63, 277);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -378,17 +378,17 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 284);
+            this.label4.Location = new System.Drawing.Point(3, 285);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 12);
+            this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 0;
-            this.label4.Text = "等待";
+            this.label4.Text = "持续时间";
             // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 337);
+            this.label3.Location = new System.Drawing.Point(15, 338);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 4;
@@ -401,7 +401,7 @@
             this.actionText.Multiline = true;
             this.actionText.Name = "actionText";
             this.actionText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.actionText.Size = new System.Drawing.Size(264, 202);
+            this.actionText.Size = new System.Drawing.Size(264, 203);
             this.actionText.TabIndex = 2;
             // 
             // label2
@@ -427,7 +427,7 @@
             // setActionText
             // 
             this.setActionText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.setActionText.Location = new System.Drawing.Point(140, 247);
+            this.setActionText.Location = new System.Drawing.Point(140, 248);
             this.setActionText.Name = "setActionText";
             this.setActionText.Size = new System.Drawing.Size(187, 23);
             this.setActionText.TabIndex = 7;
@@ -448,7 +448,7 @@
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(271, 384);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(271, 385);
             this.tableLayoutPanel5.TabIndex = 5;
             // 
             // tableLayoutPanel6

@@ -36,12 +36,12 @@ namespace TextWorldEditor2
             get { return m_goString; }
             set { m_goString = value; }
         }
-        private UInt32 m_waitingMS = 0;
+        private UInt32 m_duringMS = 0;
         [DataMember(Order = 4)]
-        public System.UInt32 WaitingMS
+        public System.UInt32 DuringMS
         {
-            get { return m_waitingMS; }
-            set { m_waitingMS = value; }
+            get { return m_duringMS; }
+            set { m_duringMS = value; }
         }
 
         public ContentAction()

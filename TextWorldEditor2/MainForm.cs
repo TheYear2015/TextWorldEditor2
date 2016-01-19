@@ -171,7 +171,7 @@ namespace TextWorldEditor2
             {
                 this.actionType.Text = action.Type.ToString();
                 this.actionText.Text = action.Text;
-                this.waitingSecond.Value = (decimal)(action.WaitingMS * 0.001);
+                this.waitingSecond.Value = (decimal)(action.DuringMS * 0.001);
                 this.chooseBtn1.Text = action.GoId[0] != 0 ? action.GoString[0] : "--";
                 this.chooseBtn2.Text = action.GoId[1] != 0 ? action.GoString[1] : "--";
             }
@@ -239,7 +239,7 @@ namespace TextWorldEditor2
             lvi.SubItems.Add(info);
 
             var waittingSec = new ListViewItem.ListViewSubItem();
-            waittingSec.Text = (action.WaitingMS * 0.001).ToString();
+            waittingSec.Text = (action.DuringMS * 0.001).ToString();
             lvi.SubItems.Add(waittingSec);
 
             var go1 = new ListViewItem.ListViewSubItem();
@@ -410,7 +410,7 @@ namespace TextWorldEditor2
             var action = GetEditingAction(out index);
             if (action != null)
             {
-                action.WaitingMS = (UInt32)(this.waitingSecond.Value * 1000);
+                action.DuringMS = (UInt32)(this.waitingSecond.Value * 1000);
                 SetListViewItemActionInfo(index, action, this.contentList.Items[index]);
             }
 
