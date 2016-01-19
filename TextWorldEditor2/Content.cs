@@ -22,20 +22,6 @@ namespace TextWorldEditor2
             get { return m_text; }
             set { m_text = value; }
         }
-        private UInt32[] m_goId = new UInt32[2];
-         [DataMember(Order = 2)]
-        public UInt32[] GoId
-        {
-            get { return m_goId; }
-            set { m_goId = value; }
-        }
-        private string [] m_goString = new string[2];
-        [DataMember(Order = 3)]
-        public string[] GoString
-        {
-            get { return m_goString; }
-            set { m_goString = value; }
-        }
         private UInt32 m_duringMS = 0;
         [DataMember(Order = 4)]
         public System.UInt32 DuringMS
@@ -44,13 +30,6 @@ namespace TextWorldEditor2
             set { m_duringMS = value; }
         }
 
-        public ContentAction()
-        {
-            for (int i = 0; i < m_goString.Count(); ++i )
-            {
-                m_goString[i] = "";
-            }
-        }
     }
 
     /// <summary>
@@ -66,27 +45,45 @@ namespace TextWorldEditor2
             get { return m_id; }
             set { m_id = value; }
         }
+        
+        private string m_name = "";
         [DataMember(Order = 1, IsRequired = true)]
         public string Name
         {
-            get
-            {
-                return m_name;
-            }
-        
-            set
-            {
-                m_name = value;
-            }
+            get{ return m_name;}
+            set{ m_name = value;}
+        }
+  
+        private UInt32[] m_goId = new UInt32[2];
+        [DataMember(Order = 2)]
+        public UInt32[] GoId
+        {
+            get { return m_goId; }
+            set { m_goId = value; }
         }
 
-        private string m_name="";
+        private string[] m_goString = new string[2];
+        [DataMember(Order = 3)]
+        public string[] GoString
+        {
+            get { return m_goString; }
+            set { m_goString = value; }
+        }
+        
         private List<ContentAction> m_contentList = new List<ContentAction>();
-        [DataMember(Order = 2)]
+        [DataMember(Order = 4)]
         public List<ContentAction> ContentList
         {
             get { return m_contentList; }
             set { m_contentList = value; }
+        }
+
+        public ContentStage()
+        {
+            for (int i = 0; i < m_goString.Count(); ++i )
+            {
+                m_goString[i] = "";
+            }
         }
     }
 
@@ -129,8 +126,15 @@ namespace TextWorldEditor2
 
         public ContentStage GetStageById(UInt32 id)
         {
-            var l = this.m_stages.First(m => m.Id == id);
-            return l;
+            try
+            {
+                var l = this.m_stages.First(m => m.Id == id);
+                return l;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 

@@ -137,11 +137,15 @@ namespace TextWorldEditor2
             {
                 this.stageId.Text = stage.Id.ToString();
                 this.stageName.Text = stage.Name;
+                this.chooseBtn1.Text = stage.GoId[0] != 0 ? stage.GoString[0] : "--";
+                this.chooseBtn2.Text = stage.GoId[1] != 0 ? stage.GoString[1] : "--";
             }
             else
             {
                 this.stageId.Text = "";
                 this.stageName.Text = "";
+                this.chooseBtn1.Text = "--";
+                this.chooseBtn2.Text = "--";
             }
 
             SetEditContentAction(null);
@@ -172,16 +176,12 @@ namespace TextWorldEditor2
                 this.actionType.Text = action.Type.ToString();
                 this.actionText.Text = action.Text;
                 this.waitingSecond.Value = (decimal)(action.DuringMS * 0.001);
-                this.chooseBtn1.Text = action.GoId[0] != 0 ? action.GoString[0] : "--";
-                this.chooseBtn2.Text = action.GoId[1] != 0 ? action.GoString[1] : "--";
             }
             else
             {
                 this.actionType.Text = "";
                 this.actionText.Text = "";
                 this.waitingSecond.Value = 0;
-                this.chooseBtn1.Text = "--";
-                this.chooseBtn2.Text = "--";
             }
         }
 
@@ -241,16 +241,6 @@ namespace TextWorldEditor2
             var waittingSec = new ListViewItem.ListViewSubItem();
             waittingSec.Text = (action.DuringMS * 0.001).ToString();
             lvi.SubItems.Add(waittingSec);
-
-            var go1 = new ListViewItem.ListViewSubItem();
-            if (action.GoId[0] != 0)
-                go1.Text = action.GoString[0];
-            lvi.SubItems.Add(go1);
-
-            var go2 = new ListViewItem.ListViewSubItem();
-            if (action.GoId[1] != 0)
-                go2.Text = action.GoString[1];
-            lvi.SubItems.Add(go2);
 
 
             lvi.Tag = this.m_editingStage.ContentList[index];
@@ -374,29 +364,29 @@ namespace TextWorldEditor2
 
         private void EditGoToStageInfo(int i)
         {
-            int index = -1;
-            var action = GetEditingAction(out index);
-            if (action != null)
+            var stage = m_editingStage;
+            if (stage != null)
             {
                 var dlg = new ChooseStageDlg();
                 dlg.SetStageTree(this.contentTree);
-                dlg.ChooseStage = m_content.GetStageById(action.GoId[i]);
-                dlg.ChooseText = action.GoString[i];
+                dlg.ChooseStage = m_content.GetStageById(stage.GoId[i]);
+                dlg.ChooseText = stage.GoString[i];
                 if (dlg.ShowDialog(this) == DialogResult.OK)
                 {
                     if (dlg.ChooseStage != null)
                     {
-                        action.GoId[i] = dlg.ChooseStage.Id;
-                        action.GoString[i] = dlg.ChooseText;
+                        stage.GoId[i] = dlg.ChooseStage.Id;
+                        stage.GoString[i] = dlg.ChooseText;
 
                     }
                     else
                     {
-                        action.GoId[i] = 0;
-                        action.GoString[i] = "";
+                        stage.GoId[i] = 0;
+                        stage.GoString[i] = "";
 
                     }
-                    SetListViewItemActionInfo(index, action, this.contentList.Items[index]);
+                    this.chooseBtn1.Text = stage.GoId[0] != 0 ? stage.GoString[0] : "--";
+                    this.chooseBtn2.Text = stage.GoId[1] != 0 ? stage.GoString[1] : "--";
                 }
                 else
                 {
