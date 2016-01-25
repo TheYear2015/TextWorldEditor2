@@ -139,6 +139,7 @@ namespace TextWorldEditor2
                 this.stageName.Text = stage.Name;
                 this.chooseBtn1.Text = stage.GoId[0] != 0 ? stage.GoString[0] : "--";
                 this.chooseBtn2.Text = stage.GoId[1] != 0 ? stage.GoString[1] : "--";
+                this.StageAutoNext.Checked = stage.AutoGoto;
             }
             else
             {
@@ -146,6 +147,7 @@ namespace TextWorldEditor2
                 this.stageName.Text = "";
                 this.chooseBtn1.Text = "--";
                 this.chooseBtn2.Text = "--";
+                this.StageAutoNext.Checked = false;
             }
 
             SetEditContentAction(null);
@@ -603,6 +605,15 @@ namespace TextWorldEditor2
                 this.dragDropTreeNode.BackColor = SystemColors.Window;
                 this.dragDropTreeNode.ForeColor = SystemColors.WindowText;
                 this.dragDropTreeNode = null;
+            }
+        }
+
+        private void StageAutoNext_CheckedChanged(object sender, EventArgs e)
+        {
+            var stage = m_editingStage;
+            if (stage != null)
+            {
+                stage.AutoGoto = this.StageAutoNext.Checked;
             }
         }
     }

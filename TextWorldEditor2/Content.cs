@@ -69,9 +69,20 @@ namespace TextWorldEditor2
             get { return m_goString; }
             set { m_goString = value; }
         }
+
+        /// <summary>
+        /// 自动进入下一个场景
+        /// </summary>
+        private bool m_isAutoGoto = false;
+        [DataMember(Order = 4)]
+        public bool AutoGoto
+        {
+            get { return m_isAutoGoto; }
+            set { m_isAutoGoto = value; }
+        }
         
         private List<ContentAction> m_contentList = new List<ContentAction>();
-        [DataMember(Order = 4)]
+        [DataMember(Order = 5)]
         public List<ContentAction> ContentList
         {
             get { return m_contentList; }
