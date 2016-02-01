@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>frames</key>
+		<dict>
+			<key>image/border.9.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{256,0},{126,126}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{126,126}</string>
+			</dict>
+			<key>image/btn_sidelines.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,0},{256,128}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{256,128}</string>
+			</dict>
+			<key>image/choice_btn.9.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{382,0},{62,65}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{62,65}</string>
+			</dict>
+			<key>image/choice_btn_chosen.9.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{444,0},{62,65}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{62,65}</string>
+			</dict>
+			<key>image/choice_btn_unchosen.9.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{382,65},{62,65}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{62,65}</string>
+			</dict>
+			<key>image/green_btn.9.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{444,65},{62,65}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{62,65}</string>
+			</dict>
+			<key>image/menu_btn.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{418,130},{64,32}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{64,32}</string>
+			</dict>
+			<key>image/menu_btn_icon_close.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{482,130},{29,20}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{29,20}</string>
+			</dict>
+			<key>image/menu_btn_icon_menu.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{482,150},{29,20}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{29,20}</string>
+			</dict>
+			<key>image/menu_btn_press.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{418,162},{64,32}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{64,32}</string>
+			</dict>
+			<key>image/strech_chat.9.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,128},{229,53}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{229,53}</string>
+			</dict>
+			<key>image/icon_fast.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{256,126},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>image/icon_restart.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{310,126},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+			<key>image/icon_slow.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{364,130},{54,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{54,54}</string>
+			</dict>
+		</dict>
+		<key>metadata</key>
+		<dict>
+			<key>format</key>
+			<integer>2</integer>
+			<key>textureFileName</key>
+			<string>image01.png</string>
+			<key>realTextureFileName</key>
+			<string>image01.png</string>
+			<key>size</key>
+			<string>{512,256}</string>
+		</dict>
+		<key>texture</key>
+		<dict>
+			<key>width</key>
+			<integer>512</integer>
+			<key>height</key>
+			<integer>256</integer>
+		</dict>
+	</dict>
+</plist>

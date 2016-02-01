@@ -124,7 +124,7 @@
             this.testToolStripBtn.Size = new System.Drawing.Size(52, 22);
             this.testToolStripBtn.Text = "Test";
             this.testToolStripBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.testToolStripBtn.Click += new System.EventHandler(this.contentToolStripBtn_Click);
+            this.testToolStripBtn.Click += new System.EventHandler(this.testToolStripBtn_Click);
             // 
             // contentTree
             // 

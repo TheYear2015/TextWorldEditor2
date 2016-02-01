@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -21,8 +22,9 @@ namespace TextWorldEditor2
             this.contentTree.Nodes.Add(new TreeNode("游戏"));
         }
 
-        private void contentToolStripBtn_Click(object sender, EventArgs e)
+        private void testToolStripBtn_Click(object sender, EventArgs e)
         {
+            Process.Start(@".\run\TextWorld.exe","");
         }
 
         private Content m_content = new Content();
@@ -42,7 +44,7 @@ namespace TextWorldEditor2
         {
             var tt = JsonConvert.SerializeObject(m_content, Formatting.Indented);
             var utf8 = new System.Text.UTF8Encoding(false);
-            File.WriteAllText("ContentStage.pck", tt, utf8);
+            File.WriteAllText(@".\run\ContentStage.pck", tt, utf8);
 
             //保存编辑树的结构
             StageTreeNode root = new StageTreeNode();
@@ -51,7 +53,7 @@ namespace TextWorldEditor2
                 InsertChildTreeNodeToData(n, root);
             }
             var ss = JsonConvert.SerializeObject(root, Formatting.Indented);
-            File.WriteAllText("ContentStage.edt", ss, utf8);
+            File.WriteAllText(@".\run\ContentStage.edt", ss, utf8);
 
         }
 
@@ -83,10 +85,10 @@ namespace TextWorldEditor2
         {
             try
             {
-                string tt = File.ReadAllText("ContentStage.pck");
+                string tt = File.ReadAllText(@".\run\ContentStage.pck");
                 this.m_content = JsonConvert.DeserializeObject<Content>(tt);
 
-                string ss = File.ReadAllText("ContentStage.edt");
+                string ss = File.ReadAllText(@".\run\ContentStage.edt");
                 StageTreeNode rootD = JsonConvert.DeserializeObject<StageTreeNode>(ss);
 
                 var root = this.contentTree.Nodes[0];
