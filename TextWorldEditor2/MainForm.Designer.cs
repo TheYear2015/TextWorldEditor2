@@ -70,6 +70,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.stageId = new System.Windows.Forms.Label();
             this.stageName = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.backMusic = new System.Windows.Forms.TextBox();
             this.toolStrip.SuspendLayout();
             this.stageContextMenu.SuspendLayout();
             this.actionContentMenu.SuspendLayout();
@@ -491,13 +493,16 @@
             // 
             // tableLayoutPanel6
             // 
-            this.tableLayoutPanel6.ColumnCount = 2;
+            this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 59F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this.tableLayoutPanel6.Controls.Add(this.label6, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.label7, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.stageId, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.stageName, 1, 1);
+            this.tableLayoutPanel6.Controls.Add(this.label8, 2, 0);
+            this.tableLayoutPanel6.Controls.Add(this.backMusic, 2, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -541,9 +546,28 @@
             this.stageName.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.stageName.Location = new System.Drawing.Point(62, 39);
             this.stageName.Name = "stageName";
-            this.stageName.Size = new System.Drawing.Size(173, 21);
+            this.stageName.Size = new System.Drawing.Size(112, 21);
             this.stageName.TabIndex = 3;
             this.stageName.Leave += new System.EventHandler(this.stageName_Leave);
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(196, 10);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(53, 12);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "背景音乐";
+            // 
+            // backMusic
+            // 
+            this.backMusic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.backMusic.Location = new System.Drawing.Point(180, 39);
+            this.backMusic.Name = "backMusic";
+            this.backMusic.Size = new System.Drawing.Size(86, 21);
+            this.backMusic.TabIndex = 5;
+            this.backMusic.Leave += new System.EventHandler(this.backMusic_Leave);
             // 
             // MainForm
             // 
@@ -622,6 +646,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.CheckBox StageAutoNext;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox backMusic;
     }
 }
 

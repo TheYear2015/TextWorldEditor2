@@ -80,9 +80,17 @@ namespace TextWorldEditor2
             get { return m_isAutoGoto; }
             set { m_isAutoGoto = value; }
         }
+
+        private string m_backMusic = "";
+        [DataMember(Order = 5)]
+        public string BackMusic
+        {
+            get { return m_backMusic; }
+            set { m_backMusic = value; }
+        }
         
         private List<ContentAction> m_contentList = new List<ContentAction>();
-        [DataMember(Order = 5)]
+        [DataMember(Order = 6)]
         public List<ContentAction> ContentList
         {
             get { return m_contentList; }
@@ -111,7 +119,6 @@ namespace TextWorldEditor2
             get { return m_baseId; }
             set { m_baseId = value; }
         }
-
         private List<ContentStage> m_stages = new List<ContentStage>();
         [DataMember(Order = 1)]
         public List<ContentStage> Stages
