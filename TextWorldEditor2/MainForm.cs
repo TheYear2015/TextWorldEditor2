@@ -626,7 +626,7 @@ namespace TextWorldEditor2
             var stage = m_editingStage;
             if (stage != null)
             {
-                stage.BackMusic  = this.backMusic.Text;
+                stage.BackMusic  = this.backMusic.Text.ToLower();
             }
         }
     }
