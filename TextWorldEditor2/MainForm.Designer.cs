@@ -57,6 +57,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.actionType = new System.Windows.Forms.TextBox();
             this.setActionText = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.SoundChannel1 = new System.Windows.Forms.TextBox();
+            this.SoundChannel2 = new System.Windows.Forms.TextBox();
+            this.SoundChannel3 = new System.Windows.Forms.TextBox();
+            this.StopChannel1 = new System.Windows.Forms.CheckBox();
+            this.StopChannel2 = new System.Windows.Forms.CheckBox();
+            this.StopChannel3 = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
@@ -72,6 +80,9 @@
             this.stageName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.backMusic = new System.Windows.Forms.TextBox();
+            this.SoundIsLoop1 = new System.Windows.Forms.CheckBox();
+            this.SoundIsLoop2 = new System.Windows.Forms.CheckBox();
+            this.SoundIsLoop3 = new System.Windows.Forms.CheckBox();
             this.toolStrip.SuspendLayout();
             this.stageContextMenu.SuspendLayout();
             this.actionContentMenu.SuspendLayout();
@@ -79,6 +90,7 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.waitingSecond)).BeginInit();
+            this.tableLayoutPanel9.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
@@ -94,7 +106,7 @@
             this.testToolStripBtn});
             this.toolStrip.Location = new System.Drawing.Point(3, 3);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(887, 25);
+            this.toolStrip.Size = new System.Drawing.Size(887, 26);
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -103,7 +115,7 @@
             this.saveToolStripBtn.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripBtn.Image")));
             this.saveToolStripBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripBtn.Name = "saveToolStripBtn";
-            this.saveToolStripBtn.Size = new System.Drawing.Size(55, 22);
+            this.saveToolStripBtn.Size = new System.Drawing.Size(58, 23);
             this.saveToolStripBtn.Text = "Save";
             this.saveToolStripBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.saveToolStripBtn.Click += new System.EventHandler(this.saveToolStripBtn_Click);
@@ -113,7 +125,7 @@
             this.loadToolStripBtn.Image = ((System.Drawing.Image)(resources.GetObject("loadToolStripBtn.Image")));
             this.loadToolStripBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.loadToolStripBtn.Name = "loadToolStripBtn";
-            this.loadToolStripBtn.Size = new System.Drawing.Size(57, 22);
+            this.loadToolStripBtn.Size = new System.Drawing.Size(59, 23);
             this.loadToolStripBtn.Text = "Load";
             this.loadToolStripBtn.Click += new System.EventHandler(this.loadToolStripBtn_Click);
             // 
@@ -123,7 +135,7 @@
             this.testToolStripBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.testToolStripBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.testToolStripBtn.Name = "testToolStripBtn";
-            this.testToolStripBtn.Size = new System.Drawing.Size(52, 22);
+            this.testToolStripBtn.Size = new System.Drawing.Size(54, 23);
             this.testToolStripBtn.Text = "Test";
             this.testToolStripBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.testToolStripBtn.Click += new System.EventHandler(this.testToolStripBtn_Click);
@@ -137,7 +149,7 @@
             this.contentTree.HideSelection = false;
             this.contentTree.Location = new System.Drawing.Point(3, 3);
             this.contentTree.Name = "contentTree";
-            this.contentTree.Size = new System.Drawing.Size(269, 429);
+            this.contentTree.Size = new System.Drawing.Size(269, 428);
             this.contentTree.TabIndex = 1;
             this.contentTree.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.contentTree_ItemDrag);
             this.contentTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.contentTree_AfterSelect);
@@ -152,19 +164,19 @@
             this.newStageMI,
             this.delStageMI});
             this.stageContextMenu.Name = "stageContextMenu";
-            this.stageContextMenu.Size = new System.Drawing.Size(101, 48);
+            this.stageContextMenu.Size = new System.Drawing.Size(105, 52);
             // 
             // newStageMI
             // 
             this.newStageMI.Name = "newStageMI";
-            this.newStageMI.Size = new System.Drawing.Size(100, 22);
+            this.newStageMI.Size = new System.Drawing.Size(104, 24);
             this.newStageMI.Text = "添加";
             this.newStageMI.Click += new System.EventHandler(this.newStageMI_Click);
             // 
             // delStageMI
             // 
             this.delStageMI.Name = "delStageMI";
-            this.delStageMI.Size = new System.Drawing.Size(100, 22);
+            this.delStageMI.Size = new System.Drawing.Size(104, 24);
             this.delStageMI.Text = "删除";
             this.delStageMI.Click += new System.EventHandler(this.delStageMI_Click);
             // 
@@ -184,7 +196,7 @@
             this.contentList.Location = new System.Drawing.Point(3, 76);
             this.contentList.MultiSelect = false;
             this.contentList.Name = "contentList";
-            this.contentList.Size = new System.Drawing.Size(269, 280);
+            this.contentList.Size = new System.Drawing.Size(269, 279);
             this.contentList.SmallImageList = this.stageSmallImageList;
             this.contentList.TabIndex = 2;
             this.contentList.UseCompatibleStateImageBehavior = false;
@@ -212,19 +224,19 @@
             this.newAcitonMI,
             this.delActionMI});
             this.actionContentMenu.Name = "actionContentMenu";
-            this.actionContentMenu.Size = new System.Drawing.Size(101, 48);
+            this.actionContentMenu.Size = new System.Drawing.Size(105, 52);
             // 
             // newAcitonMI
             // 
             this.newAcitonMI.Name = "newAcitonMI";
-            this.newAcitonMI.Size = new System.Drawing.Size(100, 22);
+            this.newAcitonMI.Size = new System.Drawing.Size(104, 24);
             this.newAcitonMI.Text = "新建";
             this.newAcitonMI.Click += new System.EventHandler(this.newAcitonMI_Click);
             // 
             // delActionMI
             // 
             this.delActionMI.Name = "delActionMI";
-            this.delActionMI.Size = new System.Drawing.Size(100, 22);
+            this.delActionMI.Size = new System.Drawing.Size(104, 24);
             this.delActionMI.Text = "删除";
             this.delActionMI.Click += new System.EventHandler(this.delActionMI_Click);
             // 
@@ -244,11 +256,11 @@
             this.tableLayoutPanel1.Controls.Add(this.contentTree, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 28);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 29);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(887, 435);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(887, 434);
             this.tableLayoutPanel1.TabIndex = 4;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
@@ -257,22 +269,25 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 1, 3);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 1, 4);
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label4, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.label4, 0, 4);
             this.tableLayoutPanel2.Controls.Add(this.actionText, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.actionType, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.setActionText, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.label9, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel9, 1, 3);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(553, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 4;
+            this.tableLayoutPanel2.RowCount = 5;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(331, 429);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(331, 428);
             this.tableLayoutPanel2.TabIndex = 7;
             // 
             // tableLayoutPanel3
@@ -282,7 +297,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.60302F));
             this.tableLayoutPanel3.Controls.Add(this.waitingSecond, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label5, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(63, 397);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(63, 396);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -335,7 +350,7 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 405);
+            this.label4.Location = new System.Drawing.Point(3, 404);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 0;
@@ -348,14 +363,14 @@
             this.actionText.Multiline = true;
             this.actionText.Name = "actionText";
             this.actionText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.actionText.Size = new System.Drawing.Size(265, 323);
+            this.actionText.Size = new System.Drawing.Size(265, 230);
             this.actionText.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 193);
+            this.label2.Location = new System.Drawing.Point(3, 147);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 3;
@@ -374,13 +389,111 @@
             // setActionText
             // 
             this.setActionText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.setActionText.Location = new System.Drawing.Point(141, 368);
+            this.setActionText.Location = new System.Drawing.Point(141, 276);
             this.setActionText.Name = "setActionText";
             this.setActionText.Size = new System.Drawing.Size(187, 23);
             this.setActionText.TabIndex = 7;
             this.setActionText.Text = "设置文字内容";
             this.setActionText.UseVisualStyleBackColor = true;
             this.setActionText.Click += new System.EventHandler(this.SetActionTextClick);
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(15, 341);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(29, 12);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "音效";
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.ColumnCount = 3;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 116F));
+            this.tableLayoutPanel9.Controls.Add(this.SoundIsLoop3, 0, 2);
+            this.tableLayoutPanel9.Controls.Add(this.SoundIsLoop2, 0, 1);
+            this.tableLayoutPanel9.Controls.Add(this.SoundChannel1, 1, 0);
+            this.tableLayoutPanel9.Controls.Add(this.SoundChannel2, 1, 1);
+            this.tableLayoutPanel9.Controls.Add(this.SoundChannel3, 1, 2);
+            this.tableLayoutPanel9.Controls.Add(this.StopChannel1, 2, 0);
+            this.tableLayoutPanel9.Controls.Add(this.StopChannel2, 2, 1);
+            this.tableLayoutPanel9.Controls.Add(this.StopChannel3, 2, 2);
+            this.tableLayoutPanel9.Controls.Add(this.SoundIsLoop1, 0, 0);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(63, 305);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 3;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(265, 85);
+            this.tableLayoutPanel9.TabIndex = 9;
+            // 
+            // SoundChannel1
+            // 
+            this.SoundChannel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SoundChannel1.Location = new System.Drawing.Point(60, 3);
+            this.SoundChannel1.Name = "SoundChannel1";
+            this.SoundChannel1.Size = new System.Drawing.Size(86, 21);
+            this.SoundChannel1.TabIndex = 0;
+            this.SoundChannel1.Leave += new System.EventHandler(this.SoundChannel1_Leave);
+            // 
+            // SoundChannel2
+            // 
+            this.SoundChannel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SoundChannel2.Location = new System.Drawing.Point(60, 31);
+            this.SoundChannel2.Name = "SoundChannel2";
+            this.SoundChannel2.Size = new System.Drawing.Size(86, 21);
+            this.SoundChannel2.TabIndex = 1;
+            this.SoundChannel2.Leave += new System.EventHandler(this.SoundChannel2_Leave);
+            // 
+            // SoundChannel3
+            // 
+            this.SoundChannel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SoundChannel3.Location = new System.Drawing.Point(60, 59);
+            this.SoundChannel3.Name = "SoundChannel3";
+            this.SoundChannel3.Size = new System.Drawing.Size(86, 21);
+            this.SoundChannel3.TabIndex = 2;
+            this.SoundChannel3.Leave += new System.EventHandler(this.SoundChannel3_Leave);
+            // 
+            // StopChannel1
+            // 
+            this.StopChannel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.StopChannel1.AutoSize = true;
+            this.StopChannel1.Location = new System.Drawing.Point(153, 6);
+            this.StopChannel1.Name = "StopChannel1";
+            this.StopChannel1.Size = new System.Drawing.Size(108, 16);
+            this.StopChannel1.TabIndex = 3;
+            this.StopChannel1.Text = "停止正在播放的";
+            this.StopChannel1.UseVisualStyleBackColor = true;
+            this.StopChannel1.CheckedChanged += new System.EventHandler(this.StopChannel1_CheckedChanged);
+            // 
+            // StopChannel2
+            // 
+            this.StopChannel2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.StopChannel2.AutoSize = true;
+            this.StopChannel2.Location = new System.Drawing.Point(153, 34);
+            this.StopChannel2.Name = "StopChannel2";
+            this.StopChannel2.Size = new System.Drawing.Size(108, 16);
+            this.StopChannel2.TabIndex = 4;
+            this.StopChannel2.Text = "停止正在播放的";
+            this.StopChannel2.UseVisualStyleBackColor = true;
+            this.StopChannel2.CheckedChanged += new System.EventHandler(this.StopChannel2_CheckedChanged);
+            // 
+            // StopChannel3
+            // 
+            this.StopChannel3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.StopChannel3.AutoSize = true;
+            this.StopChannel3.Location = new System.Drawing.Point(153, 62);
+            this.StopChannel3.Name = "StopChannel3";
+            this.StopChannel3.Size = new System.Drawing.Size(108, 16);
+            this.StopChannel3.TabIndex = 5;
+            this.StopChannel3.Text = "停止正在播放的";
+            this.StopChannel3.UseVisualStyleBackColor = true;
+            this.StopChannel3.CheckedChanged += new System.EventHandler(this.StopChannel3_CheckedChanged);
             // 
             // tableLayoutPanel5
             // 
@@ -397,7 +510,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 76F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(275, 435);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(275, 434);
             this.tableLayoutPanel5.TabIndex = 5;
             // 
             // tableLayoutPanel7
@@ -408,7 +521,7 @@
             this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel8, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 362);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 361);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -569,6 +682,42 @@
             this.backMusic.TabIndex = 5;
             this.backMusic.Leave += new System.EventHandler(this.backMusic_Leave);
             // 
+            // SoundIsLoop1
+            // 
+            this.SoundIsLoop1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SoundIsLoop1.AutoSize = true;
+            this.SoundIsLoop1.Location = new System.Drawing.Point(4, 6);
+            this.SoundIsLoop1.Name = "SoundIsLoop1";
+            this.SoundIsLoop1.Size = new System.Drawing.Size(48, 16);
+            this.SoundIsLoop1.TabIndex = 6;
+            this.SoundIsLoop1.Text = "循环";
+            this.SoundIsLoop1.UseVisualStyleBackColor = true;
+            this.SoundIsLoop1.CheckedChanged += new System.EventHandler(this.SoundIsLoop1_CheckedChanged);
+            // 
+            // SoundIsLoop2
+            // 
+            this.SoundIsLoop2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SoundIsLoop2.AutoSize = true;
+            this.SoundIsLoop2.Location = new System.Drawing.Point(4, 34);
+            this.SoundIsLoop2.Name = "SoundIsLoop2";
+            this.SoundIsLoop2.Size = new System.Drawing.Size(48, 16);
+            this.SoundIsLoop2.TabIndex = 7;
+            this.SoundIsLoop2.Text = "循环";
+            this.SoundIsLoop2.UseVisualStyleBackColor = true;
+            this.SoundIsLoop2.CheckedChanged += new System.EventHandler(this.SoundIsLoop2_CheckedChanged);
+            // 
+            // SoundIsLoop3
+            // 
+            this.SoundIsLoop3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SoundIsLoop3.AutoSize = true;
+            this.SoundIsLoop3.Location = new System.Drawing.Point(4, 62);
+            this.SoundIsLoop3.Name = "SoundIsLoop3";
+            this.SoundIsLoop3.Size = new System.Drawing.Size(48, 16);
+            this.SoundIsLoop3.TabIndex = 8;
+            this.SoundIsLoop3.Text = "循环";
+            this.SoundIsLoop3.UseVisualStyleBackColor = true;
+            this.SoundIsLoop3.CheckedChanged += new System.EventHandler(this.SoundIsLoop3_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -591,6 +740,8 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.waitingSecond)).EndInit();
+            this.tableLayoutPanel9.ResumeLayout(false);
+            this.tableLayoutPanel9.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
@@ -648,6 +799,17 @@
         private System.Windows.Forms.CheckBox StageAutoNext;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox backMusic;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
+        private System.Windows.Forms.TextBox SoundChannel1;
+        private System.Windows.Forms.TextBox SoundChannel2;
+        private System.Windows.Forms.TextBox SoundChannel3;
+        private System.Windows.Forms.CheckBox StopChannel1;
+        private System.Windows.Forms.CheckBox StopChannel2;
+        private System.Windows.Forms.CheckBox StopChannel3;
+        private System.Windows.Forms.CheckBox SoundIsLoop1;
+        private System.Windows.Forms.CheckBox SoundIsLoop3;
+        private System.Windows.Forms.CheckBox SoundIsLoop2;
     }
 }
 

@@ -30,6 +30,28 @@ namespace TextWorldEditor2
             set { m_duringMS = value; }
         }
 
+        private string[] m_soundChannel = new string[3];
+        [DataMember(Order = 5)]
+        public string[] SoundChannel
+        {
+            get { return m_soundChannel; }
+            set { m_soundChannel = value; }
+        }
+        private bool[] m_soundIsLoop = new bool[3];
+        [DataMember(Order = 6)]
+        public bool[] SoundIsLoop
+        {
+            get { return m_soundIsLoop; }
+            set { m_soundIsLoop = value; }
+        }
+
+        private bool[] m_stopChannel = new bool[3];
+        [DataMember(Order = 7)]
+        public bool[] StopChannel
+        {
+            get { return m_stopChannel; }
+            set { m_stopChannel = value; }
+        }
     }
 
     /// <summary>
@@ -45,15 +67,15 @@ namespace TextWorldEditor2
             get { return m_id; }
             set { m_id = value; }
         }
-        
+
         private string m_name = "";
         [DataMember(Order = 1, IsRequired = true)]
         public string Name
         {
-            get{ return m_name;}
-            set{ m_name = value;}
+            get { return m_name; }
+            set { m_name = value; }
         }
-  
+
         private UInt32[] m_goId = new UInt32[2];
         [DataMember(Order = 2)]
         public UInt32[] GoId
@@ -88,7 +110,7 @@ namespace TextWorldEditor2
             get { return m_backMusic; }
             set { m_backMusic = value; }
         }
-        
+
         private List<ContentAction> m_contentList = new List<ContentAction>();
         [DataMember(Order = 6)]
         public List<ContentAction> ContentList
@@ -99,7 +121,7 @@ namespace TextWorldEditor2
 
         public ContentStage()
         {
-            for (int i = 0; i < m_goString.Count(); ++i )
+            for (int i = 0; i < m_goString.Count(); ++i)
             {
                 m_goString[i] = "";
             }

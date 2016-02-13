@@ -182,12 +182,27 @@ namespace TextWorldEditor2
                 this.actionType.Text = action.Type.ToString();
                 this.actionText.Text = action.Text;
                 this.waitingSecond.Value = (decimal)(action.DuringMS * 0.001);
+                this.SoundChannel1.Text = action.SoundChannel[0];
+                this.SoundChannel2.Text = action.SoundChannel[1];
+                this.SoundChannel3.Text = action.SoundChannel[2];
+                this.StopChannel1.Checked = action.StopChannel[0];
+                this.StopChannel2.Checked = action.StopChannel[1];
+                this.StopChannel3.Checked = action.StopChannel[2];
+                this.SoundIsLoop1.Checked = action.SoundIsLoop[0];
+                this.SoundIsLoop2.Checked = action.SoundIsLoop[1];
+                this.SoundIsLoop3.Checked = action.SoundIsLoop[2];
             }
             else
             {
                 this.actionType.Text = "";
                 this.actionText.Text = "";
                 this.waitingSecond.Value = 0;
+                this.SoundChannel1.Text = "";
+                this.SoundChannel2.Text = "";
+                this.SoundChannel3.Text = "";
+                this.StopChannel1.Checked = false;
+                this.StopChannel2.Checked = false;
+                this.StopChannel3.Checked = false;
             }
         }
 
@@ -627,6 +642,159 @@ namespace TextWorldEditor2
             if (stage != null)
             {
                 stage.BackMusic  = this.backMusic.Text.ToLower();
+            }
+        }
+
+        private void SoundChannel1_Leave(object sender, EventArgs e)
+        {
+            int index = -1;
+            var action = GetEditingAction(out index);
+            if (action != null)
+            {
+                try
+                {
+                    action.SoundChannel[0]  = this.SoundChannel1.Text;
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
+        private void SoundChannel2_Leave(object sender, EventArgs e)
+        {
+            int index = -1;
+            var action = GetEditingAction(out index);
+            if (action != null)
+            {
+                try
+                {
+                    action.SoundChannel[1] = this.SoundChannel2.Text;
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
+        private void SoundChannel3_Leave(object sender, EventArgs e)
+        {
+            int index = -1;
+            var action = GetEditingAction(out index);
+            if (action != null)
+            {
+                try
+                {
+                    action.SoundChannel[2] = this.SoundChannel3.Text;
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
+        private void StopChannel1_CheckedChanged(object sender, EventArgs e)
+        {
+            int index = -1;
+            var action = GetEditingAction(out index);
+            if (action != null)
+            {
+                try
+                {
+                    action.StopChannel[0] = this.StopChannel1.Checked;
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
+        private void StopChannel2_CheckedChanged(object sender, EventArgs e)
+        {
+            int index = -1;
+            var action = GetEditingAction(out index);
+            if (action != null)
+            {
+                try
+                {
+                    action.StopChannel[1] = this.StopChannel2.Checked;
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
+        private void StopChannel3_CheckedChanged(object sender, EventArgs e)
+        {
+            int index = -1;
+            var action = GetEditingAction(out index);
+            if (action != null)
+            {
+                try
+                {
+                    action.StopChannel[2] = this.StopChannel3.Checked;
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
+        private void SoundIsLoop3_CheckedChanged(object sender, EventArgs e)
+        {
+            int index = -1;
+            var action = GetEditingAction(out index);
+            if (action != null)
+            {
+                try
+                {
+                    action.SoundIsLoop[2] = this.SoundIsLoop3.Checked;
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
+        private void SoundIsLoop2_CheckedChanged(object sender, EventArgs e)
+        {
+            int index = -1;
+            var action = GetEditingAction(out index);
+            if (action != null)
+            {
+                try
+                {
+                    action.SoundIsLoop[1] = this.SoundIsLoop2.Checked;
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
+        private void SoundIsLoop1_CheckedChanged(object sender, EventArgs e)
+        {
+            int index = -1;
+            var action = GetEditingAction(out index);
+            if (action != null)
+            {
+                try
+                {
+                    action.SoundIsLoop[0] = this.SoundIsLoop1.Checked;
+                }
+                catch
+                {
+
+                }
             }
         }
     }
